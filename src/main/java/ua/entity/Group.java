@@ -1,0 +1,36 @@
+package ua.entity;
+
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "_Group")
+public class Group {
+
+    public Group(){}
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter@Getter private int id;
+
+    @Setter@Getter private String nameGroup;
+
+    @ManyToOne
+    @Getter@Setter private ContentType contentType;
+
+    @ManyToMany
+    @JoinTable(name = "GROUP_FROM_USER",joinColumns = @JoinColumn(name = "ID_GROUP"),inverseJoinColumns = @JoinColumn(name = "ID_USER"))
+    private List<User> groupList;
+
+    @OneToMany(mappedBy = "group")
+    @Getter@Setter private List<Post> postList;
+
+
+    @Getter@Setter private int idMusic;
+
+}
