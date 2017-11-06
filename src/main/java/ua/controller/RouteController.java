@@ -31,7 +31,7 @@ public class RouteController {
     }
 
     @RequestMapping(value = "/update/name/{id}", method = RequestMethod.GET)
-    public String update(@PathVariable Integer id,@ModelAttribute String name){
+    public String updateName(@PathVariable Integer id,@ModelAttribute String name){
         userService.updateName(id,name);
         return "redirect:/login/admin";
     }
@@ -39,6 +39,12 @@ public class RouteController {
     @RequestMapping(value = "/update/surname/{id}",method = RequestMethod.GET)
     public String updateSurname(@PathVariable Integer id,@ModelAttribute String surname){
         userService.updateSurname(id,surname);
+        return "redirect:/login/admin";
+    }
+
+    @RequestMapping(value ="/update/age/{id}",method = RequestMethod.GET)
+    public String updateAge(@PathVariable int id,@ModelAttribute int age){
+        userService.updateAge(id,age);
         return "redirect:/login/admin";
     }
 

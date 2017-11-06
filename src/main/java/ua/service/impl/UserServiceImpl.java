@@ -48,5 +48,12 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public void updateAge(int id, int age) {
+        User user = findOne(id);
+        user.setAge(age);
+        userRepository.save(user);
+    }
+
 
 }

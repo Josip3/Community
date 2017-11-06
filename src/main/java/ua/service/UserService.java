@@ -18,4 +18,10 @@ public interface UserService {
     void updateName(int id,String name);
 
     void updateSurname(int id,String surname);
+
+    void updateAge(int id,int age);
+    
+
+
+
 }

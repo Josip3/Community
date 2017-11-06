@@ -69,8 +69,13 @@
                         </form>
 
                         <form action="update/surname/${user.id}" method="get">
-                            <input type="submit" value="update lastname">
+                            <input type="submit" value="update lastn">
                             <input type="text" placeholder="${user.lastName}">
+                        </form>
+
+                        <form action="/update/age/${user.id}" method="get">
+                            <input type="submit" value="update   age">
+                            <input type="text" placeholder="${user.age}">
                         </form>
 
                         <br>
