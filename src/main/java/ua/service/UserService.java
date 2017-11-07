@@ -1,6 +1,5 @@
 package ua.service;
 
-import ua.entity.City;
 import ua.entity.User;
 
 import java.util.List;
@@ -20,7 +19,7 @@ public interface UserService {
     void updateSurname(int id,String surname);
 
     void updateAge(int id,int age);
-    
+
 
 
 

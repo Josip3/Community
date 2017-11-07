@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin</title>
+    <title>Admin Page</title>
     <link rel="icon" href="/image/kek.bmp">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
@@ -53,15 +55,15 @@
                         <h5 class="userList">
                              <label>ID      : </label>    ${user.id}       <br>
                              <label>Имя     : </label>    ${user.name}     <br>
-                             <label>Возраст : </label>    ${user.age}      <br>
                              <label>Фамилия : </label>    ${user.lastName} <br>
+                             <label>Возраст : </label>    ${user.age}      <br>
                              <label>Почта   : </label>    ${user.email}    <br>
                              <label>Пароль  : </label>    ${user.password} <br>
                         </h5>
 
-                        <form action="/user/delete/${user.id}" method="get">
+                        <form:form action="/user/delete/${user.id}" method="get">
                             <input type="submit" value="delete user">
-                        </form>
+                        </form:form>
 
                         <form action="/update/name/${user.id}" method="get">
                             <input type="submit" value="update name">
