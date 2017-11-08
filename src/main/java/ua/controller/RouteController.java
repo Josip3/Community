@@ -28,7 +28,7 @@ public class RouteController {
     public String delete(@PathVariable Integer id){
         userService.delete(id);
         return "redirect:/login/admin";
-    }
+    }AS
 
     @RequestMapping(value = "/update/name/{id}", method = RequestMethod.GET)
     public String updateName(@PathVariable Integer id,@ModelAttribute String name){
