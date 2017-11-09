@@ -37,22 +37,23 @@
                 <h3>Вітаємо :)</h3>
                 <a>Community - це універсальний засіб для комунікації і пошуку людей,які оточують вас.</a>
                 <h3>Реєстрація</h3>
-                <form:form modelAttribute="user" action="save" method="post">
+
+                <form:form  action="save" method="post" modelAttribute="user">
                 <div class="reggg">
                     <label>Введіть ваш e-mail:<br>
-                        <form:input class="mail1" path="email"       type="email"/>
+                        <form:input class="email"  path="email"          type="email"/>
                     </label>
                     <br>
                     <label>Введіть ваше імя:<br>
-                        <form:input class="mail1" path="name"       type="text"/>
+                        <form:input class="name"  path="name"           type="text"/>
                     </label>
                     <br>
                     <label>Введіть ваше прізвище:<br>
-                        <form:input class="mail1" path="lastName"       type="text"/>
+                        <form:input class="lastName"  path="lastName"       type="text"/>
                     </label>
                     <br>
                     <label>Введіть пароль:<br>
-                        <form:input class="mail1" path="password"       type="password"/>
+                        <form:input class="pass"  path="password"       type="password"/>
                     </label>
                     <br>
                     <label>Повторіть пароль:<br>
@@ -62,6 +63,7 @@
                     <button class="zReg">Зареєструватись</button>
                 </div>
                 </form:form>
+
                 <h3>В чому допоможе "Community"?</h3><br>
                 <a> • Знайти людей з якими ви колись вчились/працювали.</a><br>
                 <a> • Дізнатись більше про людей,що вас оточують.</a><br>

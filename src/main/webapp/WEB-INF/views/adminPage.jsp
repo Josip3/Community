@@ -61,13 +61,13 @@
                              <label>Пароль  : </label>    ${user.password} <br>
                         </h5>
 
-                        <form:form action="/user/delete/${user.id}" method="get">
+                        <form action="/user/delete/${user.id}" method="get">
                             <input type="submit" value="delete user">
-                        </form:form>
+                        </form>
 
-                        <form action="/update/name/${user.id}" method="get">
+                        <form action="/update/name/${user.id}" method="post">
+                            <input type="text"   placeholder="${user.name}">
                             <input type="submit" value="update name">
-                            <input type="text" placeholder="${user.name}">
                         </form>
 
                         <form action="update/surname/${user.id}" method="get">
