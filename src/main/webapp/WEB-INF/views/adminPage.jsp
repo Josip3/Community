@@ -66,8 +66,8 @@
                         </form>
 
                         <form action="/update/name/${user.id}" method="post">
-                            <input type="text"   placeholder="${user.name}">
                             <input type="submit" value="update name">
+                            <input type="text"   placeholder="${user.name}">
                         </form>
 
                         <form action="update/surname/${user.id}" method="get">
