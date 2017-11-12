@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.entity.User;
+import ua.service.CityService;
 import ua.service.UserService;
 
 @Controller
@@ -12,6 +13,7 @@ public class RouteController {
 
     @Autowired
     private UserService userService;
+
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String home(){
@@ -48,17 +50,17 @@ public class RouteController {
         return "redirect:/login/admin";
     }
 
-    @RequestMapping(value = "/reg",method = RequestMethod.GET)
-    public String reg(Model model){
-        model.addAttribute("user",new User());
-        return "registration";
-    }
+        @RequestMapping(value = "/reg",method = RequestMethod.GET)
+        public String reg(Model model){
+            model.addAttribute("user",new User());
+            return "registration";
+        }
 
-    @RequestMapping(value = "/save",method = RequestMethod.POST)
-    public String saveUser(@ModelAttribute User user){
-        userService.save(user);
-        return "redirect:/reg";
-    }
+        @RequestMapping(value = "/save",method = RequestMethod.POST)
+        public String saveUser(@ModelAttribute User user){
+            userService.save(user);
+            return "redirect:/reg";
+        }
 
 
 }
