@@ -8,7 +8,6 @@ ua\config\SecurityConfig.class
 ua\service\MusicService.class
 ua\service\impl\GanreMusicServiceImpl.class
 ua\config\ApplicationWebMvcConfig.class
-ua\controller\RouteController.class
 ua\entity\User.class
 ua\repository\GanreMusicRepository.class
 ua\service\ContentTypeService.class
@@ -32,6 +31,9 @@ ua\repository\CountryRepository.class
 ua\repository\MusicRepository.class
 ua\service\GanreService.class
 ua\entity\enums\TypePhoto.class
+ua\editor\CountryEditor.class
+ua\controller\AdminController.class
+ua\controller\UserController.class
 ua\entity\Group.class
 ua\entity\ContentType.class
 ua\SampleWebJspApplication.class
@@ -39,5 +41,4 @@ ua\service\CityService.class
 ua\service\impl\MusicServiceImpl.class
 ua\service\impl\ContentTypeServiceImpl.class
 ua\service\impl\MessageServiceImpl.class
-ua\controller\Main.class
 ua\repository\GroupRepository.class

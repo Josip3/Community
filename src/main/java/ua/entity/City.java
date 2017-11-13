@@ -12,9 +12,9 @@ public class City {
 
     public City(){}
 
-    public City(String nameCity, Country country) {
+    public City(String nameCity, Country countri) {
         this.nameCity = nameCity;
-        this.country = country;
+        this.countri = countri;
     }
 
 
@@ -25,7 +25,7 @@ public class City {
     @Getter@Setter private String nameCity;
 
     @ManyToOne
-    @Getter@Setter private Country country;
+    @Getter@Setter private Country countri;
 
 
 

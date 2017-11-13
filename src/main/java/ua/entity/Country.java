@@ -14,8 +14,10 @@ public class Country {
 
     public Country(){}
 
-    public Country(String nameCountry) {
+    public Country(String nameCountry, List<User> users, List<City> cities) {
         this.nameCountry = nameCountry;
+        this.users = users;
+        this.cities = cities;
     }
 
     @Id
@@ -27,7 +29,7 @@ public class Country {
     @OneToMany(mappedBy = "country")
     @Getter@Setter private List<User> users;
 
-    @OneToMany(mappedBy = "country")
+    @OneToMany(mappedBy = "countri")
     @Getter@Setter private List<City> cities;
 
 

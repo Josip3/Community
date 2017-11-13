@@ -6,6 +6,7 @@ C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\s
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\PhotoServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\GanreMusicServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\config\ApplicationWebMvcConfig.java
+C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\controller\AdminController.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\SampleWebJspApplication.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Group.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Post.java
@@ -17,9 +18,9 @@ C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\r
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\GroupServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\MusicRepository.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\MessageServiceImpl.java
-C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\controller\RouteController.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\CityRepository.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\MusicService.java
+C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\editor\CountryEditor.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\CountryRepository.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\CityServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\MusicServiceImpl.java
@@ -29,7 +30,6 @@ C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\r
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\enums\TypePhoto.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Photo.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Message.java
-C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\controller\Main.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\User.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\CountryService.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\UserServiceImpl.java
@@ -37,6 +37,7 @@ C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\r
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Country.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\GanreMusic.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Music.java
+C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\controller\UserController.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\MessageService.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\UserRepository.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\PhotoService.java

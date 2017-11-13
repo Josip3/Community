@@ -4,6 +4,7 @@
 
 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -34,11 +35,11 @@
         </div>
         <div class=" col-lg-7 left-sidebar">
             <div class="col-lg-12  hello">
-                <h3>Вітаємо :)</h3>
+                <h3>Вітаємо </h3>
                 <a>Community - це універсальний засіб для комунікації і пошуку людей,які оточують вас.</a>
                 <h3>Реєстрація</h3>
 
-                <form:form  action="save" method="post" modelAttribute="user">
+                <form:form  action="/save" method="post" modelAttribute="user">
                 <div class="reggg">
                     <label>Введіть ваш e-mail:<br>
                         <form:input class="email"  path="email"          type="email"/>
@@ -50,6 +51,14 @@
                     <br>
                     <label>Введіть ваше прізвище:<br>
                         <form:input class="lastName"  path="lastName"       type="text"/>
+                    </label>
+                    <label>Виберіть країну народження:<br>
+
+                        <form:select  path="country">
+                            <c:forEach items ="${country}" var = "country">
+                                <option value="${country.id}">${country.nameCountry}</option>
+                            </c:forEach>
+                        </form:select>
                     </label>
                     <br>
                     <label>Введіть пароль:<br>
