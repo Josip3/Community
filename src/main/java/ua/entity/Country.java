@@ -26,10 +26,10 @@ public class Country {
 
     @Getter@Setter private String nameCountry;
 
-    @OneToMany(mappedBy = "country")
+    @OneToMany(mappedBy = "userCountry")
     @Getter@Setter private List<User> users;
 
-    @OneToMany(mappedBy = "countri")
+    @OneToMany(mappedBy = "country")
     @Getter@Setter private List<City> cities;
 
 

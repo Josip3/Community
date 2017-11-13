@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@AllArgsConstructor
 @ToString
 @Entity
 @Table(name = "_USER_")
@@ -18,22 +18,6 @@ public class User {
 
     public User(){}
 
-    public User(String name, String lastName, int age, String phoneNumber, String email, LocalDateTime dateOfBirth, String address, String password, Country country, List<Group> groupList, List<Music> musicList, List<Photo> photoList, List<Message> messageList, List<Post> postList) {
-        this.name = name;
-        this.lastName = lastName;
-        this.age = age;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.password = password;
-        this.country = country;
-        this.groupList = groupList;
-        this.musicList = musicList;
-        this.photoList = photoList;
-        this.messageList = messageList;
-        this.postList = postList;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,7 +41,7 @@ public class User {
 
 
     @ManyToOne
-    @Getter@Setter private Country country;
+    @Getter@Setter private Country userCountry;
 
     @ManyToMany
     @JoinTable(name = "GROUP_FROM_USER",joinColumns = @JoinColumn(name = "ID_USER"),inverseJoinColumns = @JoinColumn(name = "ID_GROUP"))

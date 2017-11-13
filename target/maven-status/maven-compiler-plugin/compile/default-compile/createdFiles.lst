@@ -23,6 +23,7 @@ ua\service\impl\GroupServiceImpl.class
 ua\service\impl\CountryServiceImpl.class
 ua\entity\Photo.class
 ua\repository\ContentTypeRepository.class
+ua\controller\MainController.class
 ua\entity\Message.class
 ua\repository\CityRepository.class
 ua\service\CountryService.class
