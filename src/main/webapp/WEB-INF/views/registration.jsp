@@ -16,8 +16,8 @@
     <!-- Bootstrap -->
     <link href="boot/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="../../../../fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/dopstyle.css" media="screen">
     <link rel="stylesheet" href="../boot/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/dopstyle.css" media="screen">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
