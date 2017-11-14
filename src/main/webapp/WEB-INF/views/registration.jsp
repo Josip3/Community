@@ -54,7 +54,7 @@
                     </label>
                     <label>Виберіть країну народження:<br>
 
-                        <form:select  path="country">
+                        <form:select  path="userCountry">
                             <c:forEach items ="${country}" var = "country">
                                 <option value="${country.id}">${country.nameCountry}</option>
                             </c:forEach>
