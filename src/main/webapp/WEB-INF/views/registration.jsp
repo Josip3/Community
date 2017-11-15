@@ -67,7 +67,7 @@
                     <br>
                     <label>Повторіть пароль:<br>
                         <input class="pass1"        type="password">
-                    </label>
+                    </label>MV
                     <br>
                     <button class="zReg">Зареєструватись</button>
                 </div>
