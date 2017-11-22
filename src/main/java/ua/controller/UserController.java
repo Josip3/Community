@@ -38,11 +38,11 @@ public class UserController {
         model.addAttribute("country",countryService.findAll());
         return "registration";
     }
-//
-//    @RequestMapping(value = "/",method = RequestMethod.GET)
-//    public String home(){
-//        return "redirect:/reg";
-//    }
+
+    @RequestMapping(value = "/",method = RequestMethod.GET)
+    public String home(){
+        return "redirect:/reg";
+    }
 
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     public String saveUser(@ModelAttribute  User user){
