@@ -17,9 +17,9 @@
 
 </head>
 
-<body>
 
 <div class="container">
+
     <div class="row profile">
         <div class="col-md-3">
             <div class="profile-sidebar">
