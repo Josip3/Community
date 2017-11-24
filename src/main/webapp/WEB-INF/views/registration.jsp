@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../../../../fonts/font-awesome.min.css">
     <link rel="stylesheet" href="../boot/css/bootstrap.css">
     <link rel="stylesheet" href="../css/dopstyle.css" media="screen">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="../../assets/js/html5shiv.js"></script>
@@ -62,14 +62,17 @@
                     </label>
                     <br>
                     <label>Введіть пароль:<br>
-                        <form:input class="pass"  path="password"       type="password"/>
+                        <form:input class="pass" id="pas1"  path="password"       type="password"/>
                     </label>
                     <br>
                     <label>Повторіть пароль:<br>
-                        <input class="pass2"      type="password">
+                        <input class="pass2"  id="pas2"    type="password">
                     </label>
+
                     <br>
-                    <button class="zReg">Зареєструватись</button>
+                    <button class="zReg" id="regBtn">Зареєструватись</button>
+
+
                 </div>
                 </form:form>
 

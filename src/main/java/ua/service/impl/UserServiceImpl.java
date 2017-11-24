@@ -15,8 +15,9 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     public void save(User user) {
-        user.setName(user.getName().toUpperCase());
+//        user.setName(user.getName().toUpperCase());
         userRepository.save(user);
+
     }
 
     @Override
