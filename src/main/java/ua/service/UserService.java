@@ -1,5 +1,6 @@
 package ua.service;
 
+import org.springframework.web.multipart.MultipartFile;
 import ua.entity.User;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public interface UserService {
 
     void updateAge(int id,int age);
 
+    void addMainPhoto(MultipartFile multipartFile, User user        );
 
 
 

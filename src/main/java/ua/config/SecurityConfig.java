@@ -1,12 +1,15 @@
 package ua.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import ua.service.impl.UserDetailsServiceImpl;
 
 /**
  * Created by cavayman on 08.04.2017.
@@ -25,23 +28,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
         http
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/admin**").hasRole("ADMIN")
-                .anyRequest().permitAll()
+                .csrf().disable()//и з нашого сервера надісланий запит
+                .authorizeRequests()// treba
+                .antMatchers("/").permitAll()//доступ на сторінку для  всіх
+                .antMatchers("/cm**").authenticated()//перевіряє чи в юзера роль адміна
+                .anyRequest().permitAll()//будь які роли
                 .and()
                 .formLogin()
-                .loginPage("/loginpage")
+                .loginPage("/reg")
                 .loginProcessingUrl("/loginprocesing")
                 .usernameParameter("name")
                 .passwordParameter("password")
-                .failureUrl("/loginpage")
-                .defaultSuccessUrl("/admin", true)
+                .failureUrl("/reg")
+                .defaultSuccessUrl( "/cm", true)
                 .permitAll()
                 .and()
                 .logout().logoutUrl("/logout")
-                .logoutSuccessUrl("/loginpage").permitAll();
+                .logoutSuccessUrl("/reg").permitAll();
     }
 
     @Override
@@ -51,9 +54,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/js/**", "/css/**", "/img/**", "/error/**", "/gallery/**", "/file/**", "/game/**");
     }
 
+
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin").password("admin").roles("ADMIN");
+    public void configureGlobal(AuthenticationManagerBuilder auth, UserDetailsServiceImpl userDetailsServiceImpl, PasswordEncoder encoder) throws Exception {
+      auth.inMemoryAuthentication()
+                .withUser("admin").password("admin").roles("ADMIN_ROLE");
+        auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(encoder);
+
     }
 }

@@ -1,5 +1,6 @@
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\PhotoRepository.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\CityService.java
+C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\config\Beans.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\ContentTypeService.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\GroupService.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\CountryServiceImpl.java
@@ -10,6 +11,7 @@ C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\c
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\SampleWebJspApplication.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Group.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Post.java
+C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\enums\UserRole.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\ContentTypeServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\controller\MainController.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\City.java
@@ -22,6 +24,7 @@ C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\s
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\CityRepository.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\MusicService.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\editor\CountryEditor.java
+C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\UserDetailsServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\CountryRepository.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\CityServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\MusicServiceImpl.java

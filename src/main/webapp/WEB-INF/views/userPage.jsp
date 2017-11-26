@@ -25,13 +25,14 @@
             <div class="profile-sidebar">
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
-                    <img src="../image/cat.jpg" alt="">
+                    <img src="../image/cat.jpg" alt="../image/cat.jpg">
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
                     <div class="profile-usertitle-name">
-                        Nazar Sekh
+                        ${user.name}
+                        ${user.lastName}
                     </div>
                     <div class="profile-usertitle-job">
                         Java Developer
@@ -93,7 +94,7 @@
                                 Help </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/logout">
                                 <i class="glyphicon glyphicon-off"></i>
                                 Log Out </a>
                         </li>

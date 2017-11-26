@@ -1,18 +1,23 @@
 package ua.entity;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import ua.entity.enums.UserRole;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @AllArgsConstructor
 @ToString
 @Entity
 @Table(name = "_USER_")
-public class User {
-
+public class User implements UserDetails{
+    //implements UserDetails - секюрете
     //paternMVC
     //JAVA8//stream
 
@@ -22,6 +27,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter@Setter private int id;
+
+    @Getter@Setter private boolean isEnabled;
 
     @Getter@Setter private String name;
 
@@ -38,6 +45,11 @@ public class User {
     @Getter@Setter private String address;
 
     @Getter@Setter private String password;
+
+    @Getter@Setter private String mainPhoto;
+
+    @Enumerated
+    @Getter@Setter private UserRole role;
 
 
     @ManyToOne
@@ -63,4 +75,35 @@ public class User {
     @Getter@Setter private List<Post> postList;
 
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role.name()));
+        return authorities;
+    }
+
+    @Override
+    public String getUsername() {
+        return name;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return isEnabled;
+    }
 }

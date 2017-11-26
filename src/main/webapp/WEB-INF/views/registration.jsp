@@ -84,18 +84,22 @@
         </div>
         <div class="col-md-6 col-sm-4 col-lg-4 right-sidebar">
             <h2>Вхід</h2>
+            <form:form action="loginprocesing" method="POST" >
             <label class="e-mailLog">Ваш e-mail :<br>
 
-                <input class="inEMAIL" name="email" type="email"><br>
+                <input class="inEMAIL" path="name" name="name" required><br>
 
             </label>
             <label class="passLog">Ваш пароль :<br>
 
-                <input class="inPASS" name="pass" type=password><br>
+                <input class="inPASS" path = "password" name="password" type=password required><br>
 
             </label>
             <br>
-            <button class="in">Вхід</button>
+            <button class="in" type="submit" >
+                Вхід
+            </button>
+            </form:form>
             <p class="oops"><a href="">Забули пароль?</a></p>
         </div>
         <div class=" col-lg-7 footer">
