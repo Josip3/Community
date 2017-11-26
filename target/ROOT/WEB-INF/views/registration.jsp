@@ -4,6 +4,7 @@
 
 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -15,9 +16,9 @@
     <!-- Bootstrap -->
     <link href="boot/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="../../../../fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/dopstyle.css" media="screen">
     <link rel="stylesheet" href="../boot/css/bootstrap.css">
-
+    <link rel="stylesheet" href="../css/dopstyle.css" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="../../assets/js/html5shiv.js"></script>
@@ -34,34 +35,47 @@
         </div>
         <div class=" col-lg-7 left-sidebar">
             <div class="col-lg-12  hello">
-                <h3>Вітаємо :)</h3>
+                <h3>Вітаємо </h3>
                 <a>Community - це універсальний засіб для комунікації і пошуку людей,які оточують вас.</a>
                 <h3>Реєстрація</h3>
-                <form:form modelAttribute="user" action="save" method="post">
+
+                <form:form  action="/save" method="post" modelAttribute="user">
                 <div class="reggg">
                     <label>Введіть ваш e-mail:<br>
-                        <form:input class="mail1" path="email"       type="email"/>
+                        <form:input class="email"  path="email"          type="email"/>
                     </label>
                     <br>
                     <label>Введіть ваше імя:<br>
-                        <form:input class="mail1" path="name"       type="text"/>
+                        <form:input class="name"  path="name"           type="text"/>
                     </label>
                     <br>
                     <label>Введіть ваше прізвище:<br>
-                        <form:input class="mail1" path="lastName"       type="text"/>
+                        <form:input class="lastName"  path="lastName"       type="text"/>
+                    </label>
+                    <label>Виберіть країну народження:<br>
+
+                        <form:select  path="userCountry">
+                            <c:forEach items ="${country}" var = "country">
+                                <option value="${country.id}">${country.nameCountry}</option>
+                            </c:forEach>
+                        </form:select>
                     </label>
                     <br>
                     <label>Введіть пароль:<br>
-                        <form:input class="mail1" path="password"       type="password"/>
+                        <form:input class="pass" id="pas1"  path="password"       type="password"/>
                     </label>
                     <br>
                     <label>Повторіть пароль:<br>
-                        <input class="pass1"        type="password">
+                        <input class="pass2"  id="pas2"    type="password">
                     </label>
+
                     <br>
-                    <button class="zReg">Зареєструватись</button>
+                    <button class="zReg" id="regBtn">Зареєструватись</button>
+
+
                 </div>
                 </form:form>
+
                 <h3>В чому допоможе "Community"?</h3><br>
                 <a> • Знайти людей з якими ви колись вчились/працювали.</a><br>
                 <a> • Дізнатись більше про людей,що вас оточують.</a><br>
@@ -70,18 +84,22 @@
         </div>
         <div class="col-md-6 col-sm-4 col-lg-4 right-sidebar">
             <h2>Вхід</h2>
+            <form:form action="loginprocesing" method="POST" >
             <label class="e-mailLog">Ваш e-mail :<br>
 
-                <input class="inEMAIL" name="email" type="email"><br>
+                <input class="inEMAIL" path="name" name="name" required><br>
 
             </label>
             <label class="passLog">Ваш пароль :<br>
 
-                <input class="inPASS" name="pass" type=password><br>
+                <input class="inPASS" path = "password" name="password" type=password required><br>
 
             </label>
             <br>
-            <button class="in">Вхід</button>
+            <button class="in" type="submit" >
+                Вхід
+            </button>
+            </form:form>
             <p class="oops"><a href="">Забули пароль?</a></p>
         </div>
         <div class=" col-lg-7 footer">

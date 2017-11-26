@@ -21,7 +21,9 @@ public interface UserService {
 
     void updateAge(int id,int age);
 
-    void addMainPhoto(MultipartFile multipartFile, User user        );
+    void addMainPhoto(MultipartFile multipartFile, User user);
+
+    User findByEmail(String email);
 
 
 

@@ -42,15 +42,15 @@
                 <form:form  action="/save" method="post" modelAttribute="user">
                 <div class="reggg">
                     <label>Введіть ваш e-mail:<br>
-                        <form:input class="email"  path="email"          type="email"/>
+                        <form:input class="email"  path="email"  required="required"   type="email"/>
                     </label>
                     <br>
                     <label>Введіть ваше імя:<br>
-                        <form:input class="name"  path="name"           type="text"/>
+                        <form:input class="name"  path="name"   required="required"    type="text" />
                     </label>
                     <br>
                     <label>Введіть ваше прізвище:<br>
-                        <form:input class="lastName"  path="lastName"       type="text"/>
+                        <form:input class="lastName"  path="lastName"  required = "required"     type="text"/>
                     </label>
                     <label>Виберіть країну народження:<br>
 
@@ -62,11 +62,11 @@
                     </label>
                     <br>
                     <label>Введіть пароль:<br>
-                        <form:input class="pass" id="pas1"  path="password"       type="password"/>
+                        <form:input class="pass" id="pas1"  path="password"       type="password" required = "required"/>
                     </label>
                     <br>
                     <label>Повторіть пароль:<br>
-                        <input class="pass2"  id="pas2"    type="password">
+                        <input class="pass2"  id="pas2"    type="password" required = "required">
                     </label>
 
                     <br>
@@ -87,7 +87,7 @@
             <form:form action="loginprocesing" method="POST" >
             <label class="e-mailLog">Ваш e-mail :<br>
 
-                <input class="inEMAIL" path="name" name="name" required><br>
+                <input class="inEMAIL" path="email" name="email" type="email" required><br>
 
             </label>
             <label class="passLog">Ваш пароль :<br>

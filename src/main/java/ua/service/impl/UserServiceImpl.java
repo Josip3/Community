@@ -28,7 +28,15 @@ public class UserServiceImpl implements UserService {
         user.setEnabled(true);
         user.setRole(UserRole.ADMIN_ROLE);
         user.setPassword(encoder.encode(user.getPassword()));
-        userRepository.save(user);
+        for (User email:
+             findAll()) {
+            if(!user.getEmail().equals(email.getEmail()))
+                userRepository.save(user);
+            else
+                throw new NullPointerException("Вже э такий");
+        }
+
+
 
     }
 
@@ -86,9 +94,20 @@ public class UserServiceImpl implements UserService {
                 e.printStackTrace();
             }
             multipartFile.transferTo(file);
+            userRepository.save(user);
         } catch (IOException e) {
             System.out.println("error with file");
         }
+
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return findAll()
+                .stream()
+                .filter(user -> user.getEmail().equals(email))
+                .findFirst()
+                .get();
     }
 
 

@@ -107,6 +107,12 @@
             <div class="profile-content">
                 Тут контент юзера має бути
             </div>
+            <div>
+                <form:form action="saveImage" method="post" enctype="multipart/form-data">
+                    <input type="file" path="image" name="image">
+                    <button type="submit">Do something crazy</button>
+                </form:form>
+            </div>
         </div>
     </div>
 </div>
