@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()//и з нашого сервера надісланий запит
                 .authorizeRequests()// treba
                 .antMatchers("/").permitAll()//доступ на сторінку для  всіх
-                .antMatchers("/cm**").authenticated()//перевіряє чи в юзера роль адміна
+                .antMatchers("/community**").authenticated()//перевіряє чи в юзера роль адміна
                 .anyRequest().permitAll()//будь які роли
                 .and()
                 .formLogin()
@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .failureUrl("/reg")
-                .defaultSuccessUrl( "/cm", true)
+                .defaultSuccessUrl( "/community", true)
                 .permitAll()
                 .and()
                 .logout().logoutUrl("/logout")

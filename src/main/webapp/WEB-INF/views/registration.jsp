@@ -61,15 +61,29 @@
                         </form:select>
                     </label>
                     <br>
+                    <script>
+                        window.addEventListener("load",function(){
+                            document.getElementById("regBtn").addEventListener("click",function(){
+                                var inp1 = document.getElementById("pas1"), inp2 = document.getElementById("pas2");
+                                if(inp1.value!=inp2.value){
+                                    alert("Пароли не совпадают")
+                                    inp1.value = "";
+                                    inp2.value = "";
+                                }
+                            });
+                        })
+                    </script>
+
                     <label>Введіть пароль:<br>
                         <form:input class="pass" id="pas1"  path="password"       type="password" required = "required"/>
                     </label>
                     <br>
                     <label>Повторіть пароль:<br>
-                        <input class="pass2"  id="pas2"    type="password" required = "required">
+                        <input class="pass2"     id="pas2"  type="password"       required = "required">
                     </label>
 
                     <br>
+
                     <button class="zReg" id="regBtn">Зареєструватись</button>
 
 

@@ -3,6 +3,7 @@ package ua.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,9 @@ public class MainController {
     private UserRepository userRepository;
     @Autowired
     private UserService userService;
-    @RequestMapping(value = "/cm",method = RequestMethod.GET)
+
+
+    @RequestMapping(value = "/community",method = RequestMethod.GET)
     public String getUserPage(Model model, Principal principal){
     model.addAttribute("user",userRepository.findByName(principal.getName()));
         return "userPage";
@@ -29,7 +32,12 @@ public class MainController {
     public String saveImage(Principal principal,@RequestParam MultipartFile image){
         userService.addMainPhoto(image, userRepository.findByName(principal.getName()));
 
-        return "redirect:/cm";
+        return "redirect:/community";
+    }
+    @RequestMapping(value="/id{id}", method = RequestMethod.GET)
+    public String findById(Model model, @PathVariable int id){
+        model.addAttribute("user",userService.findOne(id));
+        return "userPage";
     }
 
 }
