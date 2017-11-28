@@ -27,6 +27,7 @@
 </head>
 
 <body>
+
 <div class="container border-container">
     <div class="row">
 
@@ -46,11 +47,11 @@
                     </label>
                     <br>
                     <label>Введіть ваше імя:<br>
-                        <form:input class="name"  path="name"   required="required"    type="text" />
+                        <form:input id="userName" class="name"  path="name"   required="required"    type="text" />
                     </label>
                     <br>
                     <label>Введіть ваше прізвище:<br>
-                        <form:input class="lastName"  path="lastName"  required = "required"     type="text"/>
+                        <form:input id="userLastName" class="lastName"  path="lastName"  required = "required"     type="text"/>
                     </label>
                     <label>Виберіть країну народження:<br>
 
@@ -64,7 +65,36 @@
                     <script>
                         window.addEventListener("load",function(){
                             document.getElementById("regBtn").addEventListener("click",function(){
-                                var inp1 = document.getElementById("pas1"), inp2 = document.getElementById("pas2");
+                                //get
+                                var inp1 = document.getElementById("pas1"),
+                                    inp2 = document.getElementById("pas2"),
+                                    userName = document.getElementById("userName"),
+                                    lastName = document.getElementById("userLastName");
+                                //value
+                                var chec = document.getElementById("pas1").value,
+                                    checName = document.getElementById("userName").value,
+                                    checkLastName = document.getElementById("userLastName").value;
+
+                                if(checkLastName.indexOf(' ') > 0){
+                                    alert("Поле з прізвищем не допускає пробіл")
+                                    lastName.value = "";
+                                    lastName.style.borderColor = "red";
+                                }
+
+                                if(checName.indexOf(' ') > 0){
+                                    alert("Поле з іменем не допускає пробіл")
+                                    userName.value = "";
+                                    userName.style.borderColor = "red";
+                                }
+
+                                if (chec.length < 6){
+                                    alert("Пароль надто короткий")
+                                    inp1.value = "";
+                                    inp2.value = "";
+                                    inp1.style.borderColor = "red";
+                                    inp2.style.borderColor = "red";
+                                }
+
                                 if(inp1.value!=inp2.value){
                                     alert("Пароли не совпадают")
                                     inp1.value = "";
@@ -73,6 +103,7 @@
                             });
                         })
                     </script>
+
 
                     <label>Введіть пароль:<br>
                         <form:input class="pass" id="pas1"  path="password"       type="password" required = "required"/>
@@ -96,25 +127,32 @@
                 <a> • Завжди залишатись на звязку з тими хто вам дорогий.</a>
             </div>
         </div>
+
         <div class="col-md-6 col-sm-4 col-lg-4 right-sidebar">
             <h2>Вхід</h2>
             <form:form action="loginprocesing" method="POST" >
-            <label class="e-mailLog">Ваш e-mail :<br>
 
-                <input class="inEMAIL" path="email" name="email" type="email" required><br>
+                <label class="e-mailLog">Ваш e-mail :<br>
 
-            </label>
-            <label class="passLog">Ваш пароль :<br>
+                  <input id="mail" class="inEMAIL" path="email" name="email" type="email" required><br>
 
-                <input class="inPASS" path = "password" name="password" type=password required><br>
+                      </label>
+                <label class="passLog">Ваш пароль :<br>
 
-            </label>
+                  <input id="pass" class="inPASS" path = "password" name="password" type=password required><br>
+
+                       </label>
             <br>
-            <button class="in" type="submit" >
+
+            <button id="go" class="in" type="submit" >
                 Вхід
             </button>
             </form:form>
             <p class="oops"><a href="">Забули пароль?</a></p>
+
+
+
+
         </div>
         <div class=" col-lg-7 footer">
             <a href="#">Про сайт</a>
@@ -124,7 +162,7 @@
             <a href="#">Розробнику</a>
         </div>
         <a class="col-md-3 col-sm-3 col-lg-3 about">Community © 2017-2017</a>
-    </div>
+        </div>
 
 
 

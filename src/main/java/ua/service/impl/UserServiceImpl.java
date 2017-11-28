@@ -3,7 +3,11 @@ package ua.service.impl;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import ua.entity.User;
 import ua.entity.enums.UserRole;
@@ -78,26 +82,26 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addMainPhoto(MultipartFile multipartFile, User user) {
-        String path = System.getProperty("catalina.home") + "/resources/"
-                + user.getName() + "/" + multipartFile.getOriginalFilename();
-
-        user.setMainPhoto("resources/" + user.getName() + "/" + multipartFile.getOriginalFilename());
-
-        File file = new File(path);
-
-        try {
-            file.mkdirs();
-            try {
-                FileUtils.cleanDirectory
-                        (new File(System.getProperty("catalina.home") + "/resources/" + user.getName() + "/"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            multipartFile.transferTo(file);
-            userRepository.save(user);
-        } catch (IOException e) {
-            System.out.println("error with file");
-        }
+//        String path = System.getProperty("catalina.home") + "/resources/"
+//                + user.getName() + "/" + multipartFile.getOriginalFilename();
+//
+//        user.setMainPhoto("resources/" + user.getName() + "/" + multipartFile.getOriginalFilename());
+//
+//        File file = new File(path);
+//
+//        try {
+//            file.mkdirs();
+//            try {
+//                FileUtils.cleanDirectory
+//                        (new File(System.getProperty("catalina.home") + "/resources/" + user.getName() + "/"));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            multipartFile.transferTo(file);
+//            userRepository.save(user);
+//        } catch (IOException e) {
+//            System.out.println("error with file");
+//        }
 
     }
 
