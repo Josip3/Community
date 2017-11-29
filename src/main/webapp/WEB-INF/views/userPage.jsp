@@ -14,6 +14,8 @@
     <link href="boot/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="../../../../fonts/font-awesome.min.css">
     <link rel="stylesheet" href="../boot/css/bootstrap.css">
+    <script src="../../js/FormValidation.js"></script>
+
 
 </head>
 
@@ -25,7 +27,7 @@
             <div class="profile-sidebar">
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
-                    <img src="../image/cat.jpg" alt="../image/cat.jpg">
+                    <img src="../image/cat.jpg" alt="../image/cat.jpg" onclick="generatePhotoSelect()">
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
@@ -42,7 +44,7 @@
                 <!-- SIDEBAR BUTTONS -->
                 <div class="profile-userbuttons">
                     <button type="button" class="btn btn-success btn-sm">Add to friend</button>
-                    <button type="button" class="btn btn-danger btn-sm">Message</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="generateSome()">Message</button>
                 </div>
                 <!-- END SIDEBAR BUTTONS -->
                 <!-- SIDEBAR MENU -->
@@ -54,7 +56,7 @@
                                 My page </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="#" onclick="generateSome()">
                                 <i class="glyphicon glyphicon-envelope"></i>
                                 Message
                             </a>
@@ -104,15 +106,11 @@
             </div>
         </div>
         <div class="col-md-9">
-            <div class="profile-content">
-                Тут контент юзера має бути
+            <div class="profile-content" id="dupa">
+                Тут контент юзера має <бути></бути>
+                <button onclick="generateSome()"></button>
             </div>
-            <div>
-                <form:form action="saveImage" method="post" enctype="multipart/form-data">
-                    <input type="file" path="image" name="image">
-                    <button type="submit">Do something crazy</button>
-                </form:form>
-            </div>
+
         </div>
     </div>
 </div>

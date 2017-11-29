@@ -16,7 +16,10 @@ import ua.service.UserService;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.Optional.ofNullable;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -33,7 +36,7 @@ public class UserServiceImpl implements UserService {
         user.setRole(UserRole.ADMIN_ROLE);
         user.setPassword(encoder.encode(user.getPassword()));
         for (User email:
-             findAll()) {
+             ofNullable(findAll()).orElse(new ArrayList<>())) {
             if(!user.getEmail().equals(email.getEmail()))
                 userRepository.save(user);
             else
