@@ -1,8 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-
-
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -19,6 +17,7 @@
     <link rel="stylesheet" href="../boot/css/bootstrap.css">
     <link rel="stylesheet" href="../css/dopstyle.css" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/FormValidation.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="../../assets/js/html5shiv.js"></script>
@@ -27,6 +26,35 @@
 </head>
 
 <body>
+
+<%--<script>--%>
+
+    <%--var user = {--%>
+        <%--"name":"Nazar",--%>
+        <%--"lastName" : "Sekh",--%>
+        <%--"age" : 25,--%>
+        <%--"email" : "Nazariks@gmail.com"--%>
+    <%--}--%>
+    <%--JSON.stringify(user)--%>
+
+    <%--$.ajax({--%>
+        <%--'url' :'http://localhost:8080/save/user',--%>
+        <%--'type':"PUT",--%>
+        <%--'dataType' : "json",--%>
+        <%--'contentType' : "application/json",--%>
+        <%--'data' : JSON.stringify(user),--%>
+        <%--'success':function (data) {--%>
+            <%----%>
+        <%--}--%>
+
+
+
+    <%--})--%>
+
+<%--</script>--%>
+
+
+
 <div class="container border-container">
     <div class="row">
 
@@ -42,15 +70,15 @@
                 <form:form  action="/save" method="post" modelAttribute="user">
                 <div class="reggg">
                     <label>Введіть ваш e-mail:<br>
-                        <form:input class="email"  path="email"          type="email"/>
+                        <form:input class="email"  path="email"  required="required"   type="email"/>
                     </label>
                     <br>
                     <label>Введіть ваше імя:<br>
-                        <form:input class="name"  path="name"           type="text"/>
+                        <form:input id="userName" class="name"  path="name"   required="required"    type="text" />
                     </label>
                     <br>
                     <label>Введіть ваше прізвище:<br>
-                        <form:input class="lastName"  path="lastName"       type="text"/>
+                        <form:input id="userLastName" class="lastName"  path="lastName"  required = "required"     type="text"/>
                     </label>
                     <label>Виберіть країну народження:<br>
 
@@ -62,15 +90,14 @@
                     </label>
                     <br>
                     <label>Введіть пароль:<br>
-                        <form:input class="pass" id="pas1"  path="password"       type="password"/>
+                        <form:input class="pass" id="pas1"  path="password" type="password" required = "required"/>
                     </label>
                     <br>
                     <label>Повторіть пароль:<br>
-                        <input class="pass2"  id="pas2"    type="password">
+                        <input class="pass2"     id="pas2"  type="password"       required = "required">
                     </label>
-
                     <br>
-                    <button class="zReg" id="regBtn">Зареєструватись</button>
+                    <button class="zReg" id="regBtn" type="submit">Зареєструватись</button>
 
 
                 </div>
@@ -82,25 +109,32 @@
                 <a> • Завжди залишатись на звязку з тими хто вам дорогий.</a>
             </div>
         </div>
+
         <div class="col-md-6 col-sm-4 col-lg-4 right-sidebar">
             <h2>Вхід</h2>
             <form:form action="loginprocesing" method="POST" >
-            <label class="e-mailLog">Ваш e-mail :<br>
 
-                <input class="inEMAIL" path="name" name="name" required><br>
+                <label class="e-mailLog">Ваш e-mail :<br>
 
-            </label>
-            <label class="passLog">Ваш пароль :<br>
+                  <input id="mail" class="inEMAIL" path="email" name="email" type="email" required><br>
 
-                <input class="inPASS" path = "password" name="password" type=password required><br>
+                      </label>
+                <label class="passLog">Ваш пароль :<br>
 
-            </label>
+                  <input id="pass" class="inPASS" path = "password" name="password" type=password required><br>
+
+                       </label>
             <br>
-            <button class="in" type="submit" >
+
+            <button id="go" class="in" type="submit" >
                 Вхід
             </button>
             </form:form>
             <p class="oops"><a href="">Забули пароль?</a></p>
+
+
+
+
         </div>
         <div class=" col-lg-7 footer">
             <a href="#">Про сайт</a>
@@ -110,7 +144,7 @@
             <a href="#">Розробнику</a>
         </div>
         <a class="col-md-3 col-sm-3 col-lg-3 about">Community © 2017-2017</a>
-    </div>
+        </div>
 
 
 

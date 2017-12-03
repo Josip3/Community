@@ -40,17 +40,20 @@ window.addEventListener("load",function(){
 })
 
 function generateSome() {
-    var html = document.getElementById("dupa");
+    var html = document.getElementById("userContent");
     html.innerHTML = "<div style='background: red;width: 100px;height: 100px'></div>";
 }
 
+//generationHTML
 function generatePhotoSelect() {
 
-    document.getElementById("dupa").innerHTML = " <div>\n" +
-        "                <form:form action=\"saveImage\" method=\"post\" enctype=\"multipart/form-data\">\n" +
-        "                    <input type=\"file\" path=\"image\" name=\"image\">\n" +
-        "                    <button type=\"submit\">Do something crazy</button>\n" +
-        "                </form:form>\n" +
-        "            </div>"
+    document.getElementById("userContent").innerHTML = " <div>\n" +
+        "<form:form action=\"saveImage\" method=\"post\" enctype=\"multipart/form-data\">\n" +
+        "<input type=\"file\" path=\"image\" name=\"image\">\n" +
+        "<button type=\"submit\">Do something crazy</button>\n" +
+        "</form:form>\n" +
+        "</div>"
 
 }
+
+

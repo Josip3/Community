@@ -1,29 +1,27 @@
 package ua.service;
 
+import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 import ua.entity.User;
+import ua.request.MyPageRequest;
 
 import java.util.List;
 
 public interface UserService {
 
-    void save(User user);
-
-    List<User> findAll();
-
     User findOne(int id);
 
     void delete(int id);
 
-    void updateName(int id,String name);
+    void save(User user);
 
-    void updateSurname(int id,String surname);
-
-    void updateAge(int id,int age);
-
-    void addMainPhoto(MultipartFile multipartFile, User user);
+    List<User> findAlls();
 
     User findByEmail(String email);
+
+    Page<User> findAll(MyPageRequest myPageRequest);
+
+    void addMainPhoto(MultipartFile multipartFile, User user);
 
 
 

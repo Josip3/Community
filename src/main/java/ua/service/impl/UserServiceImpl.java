@@ -1,21 +1,19 @@
 package ua.service.impl;
 
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.springframework.web.multipart.MultipartFile;
 import ua.entity.User;
 import ua.entity.enums.UserRole;
 import ua.repository.UserRepository;
+import ua.request.MyPageRequest;
 import ua.service.UserService;
 
-import java.io.File;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,12 +29,12 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     public void save(User user) {
-//        user.setName(user.getName().toUpperCase());
+        user.setName(user.getName().toUpperCase());
         user.setEnabled(true);
         user.setRole(UserRole.ADMIN_ROLE);
         user.setPassword(encoder.encode(user.getPassword()));
         for (User email:
-             ofNullable(findAll()).orElse(new ArrayList<>())) {
+                ofNullable(findAlls()).orElse(new ArrayList<>())) {
             if(!user.getEmail().equals(email.getEmail()))
                 userRepository.save(user);
             else
@@ -48,7 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAll() {
+    public List<User> findAlls() {
         return userRepository.findAll();
     }
 
@@ -63,24 +61,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateName(int id, String name) {
-        User user = findOne(id);
-        user.setName(name);
-        userRepository.save(user);
-    }
-
-    @Override
-    public void updateSurname(int id, String surname) {
-        User user = findOne(id);
-        user.setLastName(surname);
-        userRepository.save(user);
-    }
-
-    @Override
-    public void updateAge(int id, int age) {
-        User user = findOne(id);
-        user.setAge(age);
-        userRepository.save(user);
+    public Page<User> findAll(MyPageRequest page) {
+        PageRequest pageRequest = new PageRequest(page.getNumberPage(),page.getNumberPage());
+        return userRepository.findAll(pageRequest);
     }
 
     @Override
@@ -108,9 +91,10 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    //головне фото на сторінці юзера
     @Override
     public User findByEmail(String email) {
-        return findAll()
+        return findAlls()
                 .stream()
                 .filter(user -> user.getEmail().equals(email))
                 .findFirst()

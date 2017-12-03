@@ -18,7 +18,7 @@ public class AdminController {
 
     @RequestMapping(value = "/login/admin",method = RequestMethod.GET)
     public String test(Model model){
-        model.addAttribute("users",userService.findAll());
+        model.addAttribute("users",userService.findAlls());
         return "adminPage";
     }
 
@@ -28,22 +28,6 @@ public class AdminController {
         return "redirect:/login/admin";
     }
 
-    @RequestMapping(value = "/update/name/{id}", method = RequestMethod.POST)
-    public String updateName(@PathVariable Integer id,String name){
-        userService.updateName(id,name);
-        return "redirect:/login/admin";
-    }
 
-    @RequestMapping(value = "/update/surname/{id}",method = RequestMethod.GET)
-    public String updateSurname(@PathVariable Integer id,@ModelAttribute String surname){
-        userService.updateSurname(id,surname);
-        return "redirect:/login/admin";
-    }
-
-    @RequestMapping(value ="/update/age/{id}",method = RequestMethod.GET)
-    public String updateAge(@PathVariable int id,@ModelAttribute int age){
-        userService.updateAge(id,age);
-        return "redirect:/login/admin";
-    }
 
 }

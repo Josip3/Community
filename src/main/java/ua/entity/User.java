@@ -1,16 +1,24 @@
 package ua.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ua.dto.Request;
 import ua.entity.enums.UserRole;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import static ua.service.validators.ValidationConstants.*;
 
 @AllArgsConstructor
 @ToString
@@ -28,25 +36,30 @@ public class User implements UserDetails{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter@Setter private int id;
 
+    @Getter@Setter private int age;
+
     @Getter@Setter private boolean isEnabled;
 
     @Getter@Setter private String name;
 
     @Getter@Setter private String lastName;
 
-    @Getter@Setter private int age;
-
     @Getter@Setter private String phoneNumber;
 
+    @Column(name = "email",unique = true,nullable = false)
+    @NotNull(message = NULL_MESSAGE,groups = Request.class)
+    @Size(min = EMAIL_MIN_SIZE, max = EMAIL_MAX_SIZE, groups = Request.class)
+    @Pattern(regexp = EMAIL_PATTERN,message = EMAIL_PATTERN_MESSAGE, groups = Request.class)
     @Getter@Setter private String email;
-
-    @Getter@Setter private LocalDateTime dateOfBirth;
 
     @Getter@Setter private String address;
 
+    @JsonIgnore
     @Getter@Setter private String password;
 
     @Getter@Setter private String mainPhoto;
+
+    @Getter@Setter private LocalDateTime dateOfBirth;
 
     @Enumerated
     @Getter@Setter private UserRole role;
@@ -80,6 +93,7 @@ public class User implements UserDetails{
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(role.name()));
         return authorities;
+
     }
 
     @Override
