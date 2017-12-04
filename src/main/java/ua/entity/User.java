@@ -88,6 +88,7 @@ public class User implements UserDetails{
     @Getter@Setter private List<Post> postList;
 
 
+    //повертатиме роль юзера,викликаэться спрингом
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
@@ -96,9 +97,11 @@ public class User implements UserDetails{
 
     }
 
+    //типу логын юзера
     @Override
     public String getUsername() {
-        return name;
+        return email;
+        //return this.email;
     }
 
     @Override
