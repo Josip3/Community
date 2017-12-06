@@ -21,12 +21,6 @@
 </head>
 
 <body>
-<div id="listUsers">
-    <h2>Users:</h2>
-    <ol id="list">
-
-    </ol>
-</div>
 
 <div class="container border-container">
     <div class="row">
@@ -54,7 +48,7 @@
                     </label>
                     <br>
                     <label>Введіть пароль:<br>
-                        <input class="pass" id="pas1"  path="password" type="password" required = "required"/>
+                        <input class="pass"      id="pas1"  path="password" type="password" required = "required"/>
                     </label>
                     <br>
                     <label>Повторіть пароль:<br>
@@ -64,38 +58,36 @@
                     <button class="zReg" id="regBtn" type="submit">Зареєструватись</button>
 
 
-                    <script>
-
-
-                        $('#regBtn').click(function(){
-                            var email =    $('#userEmail').val();
-                            var name =     $('#userName').val();
-                            var surname =  $('#userLastName').val();
-                            var password = $('#pas1').val();
-
-                            var user = {
-                                'email':     email,
-                                'name':      name,
-                                'lastName':  surname,
-                                'password':  password
-                            };
-
-                            $.ajax({
-                                'url':'http://localhost:8080/registration',
-                                'type':"PUT",
-                                'contentType':'application/json',
-                                'dataType':'json',
-                                'data':JSON.stringify(user),
-                                'success':function(data){
-                                    console.log(data);
-                                },
-                                'error':function (error) {
-                                    console.log(error);
-                                }
-                            });
-                        });
-                    </script>
                 </div>
+                <script>
+
+
+                    $('#regBtn').click(function(){
+                        var name =     $('#userName').val();
+                        var surname =  $('#userLastName').val();
+                        var email =    $('#userEmail').val();
+                        var password = $('#pas1').val();
+
+                        var user = {
+                            'name':      name,
+                            'lastName':  surname,
+                            'email':     email,
+                            'password':  password
+                        };
+                        console.log("success build object")
+                        $.ajax({
+                            'url':'http://localhost:80/registration/save',
+                            'type':"PUT",
+                            'contentType':'application/json',
+                            'dataType':'json',
+                            'data':JSON.stringify(user),
+                            'success':function(data){
+                                console.log(data);
+                            }
+
+                        });
+                    });
+                </script>
 
                 <h3>В чому допоможе "Community"?</h3><br>
                 <a> • Знайти людей з якими ви колись вчились/працювали.</a><br>
@@ -142,10 +134,10 @@
 
 </div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="//code.jquery.com/jquery.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../../../../js/bootstrap.min.js"></script>
+<!--&lt;!&ndash; jQuery (necessary for Bootstrap's JavaScript plugins) &ndash;&gt;-->
+<!--<script src="//code.jquery.com/jquery.js"></script>-->
+<!--&lt;!&ndash; Include all compiled plugins (below), or include individual files as needed &ndash;&gt;-->
+<!--<script src="../../../../js/bootstrap.min.js"></script>-->
 </body>
 
 </html>

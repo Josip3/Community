@@ -51,7 +51,6 @@ public class UserController {
 
     @RequestMapping(value = "/registration",method = RequestMethod.GET)
     public String getRegistrationPage(){
-
         return "registrationH";
     }
 
