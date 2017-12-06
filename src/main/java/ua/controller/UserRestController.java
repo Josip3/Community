@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ua.entity.User;
 import ua.restService.UserRestService;
+import ua.service.UserService;
 
 import java.util.List;
 
@@ -17,10 +18,6 @@ public class UserRestController {
     @Autowired
     private UserRestService userRestService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<User> start(){
-        return userRestService.findAll();
-    }
 
     @RequestMapping(method = RequestMethod.PUT)
     public User register(@RequestBody User user){

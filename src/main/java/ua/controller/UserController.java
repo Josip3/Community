@@ -38,7 +38,7 @@ public class UserController {
         return "registration";
     }
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = "/",    method = RequestMethod.GET)
     public String home(){
         return "redirect:/reg";
     }
@@ -49,6 +49,11 @@ public class UserController {
         return "redirect:/reg";
     }
 
+    @RequestMapping(value = "/registration",method = RequestMethod.GET)
+    public String getRegistrationPage(){
+
+        return "registrationH";
+    }
 
 
 

@@ -2,8 +2,10 @@ package ua.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -15,14 +17,16 @@ import ua.service.impl.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)//буде працювати тыльки з методами де поставлена анотація PreAuthorize
+/*@ComponentScan("ua.")*/
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected  void configure(HttpSecurity http) throws Exception {
 
         http
-                .csrf().disable()//и з нашого сервера надісланий запит
+                .csrf().disable()//шоб при кожному запиты не надсилати токен    
                 .authorizeRequests()// treba
                 .antMatchers("/").permitAll()//доступ на сторінку для  всіх
                 .antMatchers("/community**").authenticated()//перевіряє чи в юзера роль адміна
@@ -42,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public     void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
                 .antMatchers("/js/**", "/css/**", "/img/**", "/error/**", "/gallery/**", "/file/**", "/game/**");
@@ -50,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth, UserDetailsServiceImpl userDetailsServiceImpl, PasswordEncoder encoder) throws Exception {
+    public     void configureGlobal(AuthenticationManagerBuilder auth, UserDetailsServiceImpl userDetailsServiceImpl, PasswordEncoder encoder) throws Exception {
       auth.inMemoryAuthentication()
                 .withUser("admin").password("admin").roles("ADMIN_ROLE");
         auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(encoder);
