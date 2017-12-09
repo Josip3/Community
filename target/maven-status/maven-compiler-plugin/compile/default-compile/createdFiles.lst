@@ -51,4 +51,5 @@ ua\entity\Group.class
 ua\config\Beans.class
 ua\entity\ContentType.class
 ua\service\impl\ContentTypeServiceImpl.class
+ua\request\LoginRequest.class
 ua\service\impl\MessageServiceImpl.class

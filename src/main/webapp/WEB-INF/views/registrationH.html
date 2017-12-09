@@ -59,35 +59,6 @@
 
 
                 </div>
-                <script>
-
-
-                    $('#regBtn').click(function(){
-                        var name =     $('#userName').val();
-                        var surname =  $('#userLastName').val();
-                        var email =    $('#userEmail').val();
-                        var password = $('#pas1').val();
-
-                        var user = {
-                            'name':      name,
-                            'lastName':  surname,
-                            'email':     email,
-                            'password':  password
-                        };
-                        console.log("success build object")
-                        $.ajax({
-                            'url':'http://localhost:80/registration/save',
-                            'type':"PUT",
-                            'contentType':'application/json',
-                            'dataType':'json',
-                            'data':JSON.stringify(user),
-                            'success':function(data){
-                                console.log(data);
-                            }
-
-                        });
-                    });
-                </script>
 
                 <h3>В чому допоможе "Community"?</h3><br>
                 <a> • Знайти людей з якими ви колись вчились/працювали.</a><br>
@@ -103,21 +74,89 @@
 
                 <input id="mail" class="inEMAIL" path="email" name="email" type="email" required><br>
 
-                </label>
-                <label class="passLog">Ваш пароль :<br>
+            </label>
+            <label class="passLog">Ваш пароль :<br>
 
-                    <input id="pass" class="inPASS" path = "password" name="password" type=password required><br>
+                <input id="pass" class="inPASS" path = "password" name="password" type=password required><br>
 
-                </label>
-                <br>
+            </label>
+            <br>
 
-                <button id="go" class="in" type="submit" >
-                    Вхід
-                </button>
+            <button id="go" class="in" type="submit" >
+                Вхід
+            </button>
             <p class="oops"><a href="">Забули пароль?</a></p>
 
 
 
+            <script>
+                var inp1 = document.getElementById("pas1"),
+                    inp2 = document.getElementById("pas2"),
+                    userName = document.getElementById("userName"),
+                    lastName = document.getElementById("userLastName");
+                email=document.getElementById("userEmail");
+
+                $('#regBtn').click(function(){
+                    var name =     $('#userName').val();
+                    var surname =  $('#userLastName').val();
+                    var email =    $('#userEmail').val();
+                    var password = $('#pas1').val();
+
+                    var user = {
+                        'name':      name,
+                        'lastName':  surname,
+                        'email':     email,
+                        'password':  password
+                    };
+                    console.log("success build object")
+                    $.ajax({
+                        'url':'http://localhost:80/registration/save',
+                        'type':"PUT",
+                        'contentType':'application/json',
+                        'dataType':'json',
+                        'data':JSON.stringify(user),
+                        'success':function(data){
+                            if (data == true){
+
+                                inp1.value = "";
+                                inp2.value = "";
+                                userName.value = "";
+                                lastName.value = "";
+                                email.value = "";
+
+                                alert('Вітаємо,ви успішно зареєстровані!♥')
+                                console.log(data);
+                            }
+                        }
+
+                    });
+                });
+
+                $('#go').click(function(){
+                    var login = $('#login').val();
+                    var pass = $('#pass').val();
+                    var loginReq = {
+                        'email':login,
+                        'password':pass
+                    };
+                    $.ajax({
+                        'url':'http://localhost:80/registration/login',
+                        'type':"POST",
+                        'contentType':'application/json',
+                        'dataType':'json',
+                        'data':JSON.stringify(loginReq),
+                        'success':function(data){
+                            if(data == true){
+                                alert('Welcom to our webSite');
+                            }
+                        },
+                        'error':function(error){
+                            alert(JSON.parse(error.responseText).message);
+                        }
+                    });
+                });
+
+            </script>
 
         </div>
         <div class=" col-lg-7 footer">

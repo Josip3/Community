@@ -54,7 +54,6 @@ public class User implements UserDetails{
 
     @Getter@Setter private String address;
 
-    @JsonIgnore
     @Getter@Setter private String password;
 
     @Getter@Setter private String mainPhoto;

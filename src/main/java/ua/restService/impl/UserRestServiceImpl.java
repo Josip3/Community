@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ua.entity.User;
 import ua.entity.enums.UserRole;
 import ua.repository.UserRepository;
+import ua.request.LoginRequest;
 import ua.restService.UserRestService;
 
 import java.util.List;
@@ -26,6 +27,24 @@ public class UserRestServiceImpl implements UserRestService {
         user.setRole(UserRole.ADMIN_ROLE);
         user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
+    }
+
+    @Override
+    public boolean login(LoginRequest loginRequest) {
+        if(loginRequest!=null){
+            User user  = userRepository.findByEmail(loginRequest.getEmail());
+            if(user!=null){
+                if(user.getPassword().equals(loginRequest.getPassword())){
+                    return true;
+                }else{
+                    throw new IllegalArgumentException("Login or password is incorrect");
+                }
+            }else{
+                throw new IllegalArgumentException("Login or password is incorrect");
+            }
+        }else{
+            throw new IllegalArgumentException("LoginRequest not be null");
+        }
     }
 
     @Override

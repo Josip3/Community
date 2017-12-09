@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ua.entity.User;
+import ua.request.LoginRequest;
 import ua.restService.UserRestService;
 import ua.service.UserService;
 
@@ -23,6 +24,11 @@ public class UserRestController {
     @RequestMapping(method = RequestMethod.PUT,value = "/save")
     public User register(@RequestBody User user){
         return userRestService.register(user);
+    }
+
+    @RequestMapping(method = RequestMethod.POST,value = "/login")
+    public boolean login(@RequestBody LoginRequest loginRequest){
+        return userRestService.login(loginRequest);
     }
 
 
