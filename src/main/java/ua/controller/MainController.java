@@ -1,6 +1,8 @@
 package ua.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,10 +24,16 @@ public class MainController {
     private UserService userService;
 
 
+//    @RequestMapping(value = "/community",method = RequestMethod.GET)
+//    public String getUserPage(Model model, Principal principal){
+//    model.addAttribute("user",userRepository.findByName(principal.getName()));
+//        return "userPage";
+//    }
+
+    @PreAuthorize("hasRole('')")
     @RequestMapping(value = "/community",method = RequestMethod.GET)
-    public String getUserPage(Model model, Principal principal){
-    model.addAttribute("user",userRepository.findByName(principal.getName()));
-        return "userPage";
+    public String getUserPage(){
+        return "content";
     }
 
     @RequestMapping(value = "/saveImage", method = RequestMethod.POST)

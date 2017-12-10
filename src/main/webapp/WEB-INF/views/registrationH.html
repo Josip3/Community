@@ -36,7 +36,7 @@
 
                 <div class="reggg">
                     <label>Введіть ваш e-mail:<br>
-                        <input id="userEmail" class="email"  path="email"  required="required"   type="email"/>
+                        <input id="userEmail" name="email" class="email"  path="email"  required="required"   type="email"/>
                     </label>
                     <br>
                     <label>Введіть ваше імя:<br>
@@ -93,8 +93,8 @@
                 var inp1 = document.getElementById("pas1"),
                     inp2 = document.getElementById("pas2"),
                     userName = document.getElementById("userName"),
-                    lastName = document.getElementById("userLastName");
-                email=document.getElementById("userEmail");
+                    lastName = document.getElementById("userLastName"),
+                    userEmail = document.getElementById("userEmail");
 
                 $('#regBtn').click(function(){
                     var name =     $('#userName').val();
@@ -110,30 +110,30 @@
                     };
                     console.log("success build object")
                     $.ajax({
-                        'url':'http://localhost:80/registration/save',
-                        'type':"PUT",
-                        'contentType':'application/json',
-                        'dataType':'json',
-                        'data':JSON.stringify(user),
-                        'success':function(data){
-                            if (data == true){
+                        url:'http://localhost:80/registration/save',
+                        type:"PUT",
+                        contentType:'application/json',
+                        dataType:'json',
+                        data    :JSON.stringify(user),
+                        success :function(data){
+
 
                                 inp1.value = "";
                                 inp2.value = "";
                                 userName.value = "";
                                 lastName.value = "";
-                                email.value = "";
+                                userEmail.value = "";
 
                                 alert('Вітаємо,ви успішно зареєстровані!♥')
                                 console.log(data);
-                            }
+
                         }
 
                     });
                 });
 
                 $('#go').click(function(){
-                    var login = $('#login').val();
+                    var login = $('#mail').val();
                     var pass = $('#pass').val();
                     var loginReq = {
                         'email':login,
@@ -146,13 +146,13 @@
                         'dataType':'json',
                         'data':JSON.stringify(loginReq),
                         'success':function(data){
-                            if(data == true){
+
                                 alert('Welcom to our webSite');
-                            }
-                        },
-                        'error':function(error){
-                            alert(JSON.parse(error.responseText).message);
+                            console.log(data);
+
+
                         }
+
                     });
                 });
 

@@ -4,8 +4,10 @@ ua\service\impl\UserServiceImpl.class
 ua\controller\UserRestController.class
 ua\service\MusicService.class
 ua\config\ApplicationWebMvcConfig.class
+ua\security\TokenUtils.class
 ua\repository\MessageRepository.class
 ua\service\PhotoService.class
+ua\security\AuthenticationTokenFilter.class
 ua\service\UserService.class
 ua\service\impl\CityServiceImpl.class
 ua\service\validators\ValidationConstants.class
@@ -40,6 +42,7 @@ ua\restService\impl\UserRestServiceImpl.class
 ua\entity\Post.class
 ua\repository\UserRepository.class
 ua\service\impl\GroupServiceImpl.class
+ua\security\EntryPointUnauthorizedHandler.class
 ua\service\impl\CountryServiceImpl.class
 ua\repository\ContentTypeRepository.class
 ua\repository\CityRepository.class

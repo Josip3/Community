@@ -96,7 +96,7 @@ public class User implements UserDetails{
 
     }
 
-    //типу логын юзера
+    //Відповідає за логін юзера
     @Override
     public String getUsername() {
         return email;
