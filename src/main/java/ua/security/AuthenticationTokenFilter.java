@@ -45,10 +45,15 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
         System.err.println("do  filter");
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String authToken = httpRequest.getHeader(this.tokenHeader);
+
         String username = this.tokenUtils.getUsernameFromToken(authToken);
+        System.err.println("auth token"+authToken);
+        System.err.println("user name"+username);
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+            System.err.println("first if");
             if (this.tokenUtils.validateToken(authToken, userDetails)) {
+                System.err.println("first if");
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpRequest));
                 SecurityContextHolder.getContext().setAuthentication(authentication);

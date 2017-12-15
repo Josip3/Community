@@ -34,9 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private EntryPointUnauthorizedHandler entryPointUnauthorizedHandler;
 
-
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
 
     public void configureAuth(AuthenticationManagerBuilder managerBuilder) throws Exception {
@@ -55,20 +54,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/*").permitAll()//доступ на сторінку для  всіх
                 .antMatchers("/community**").authenticated()//перевіряє чи в юзера роль адміна
                 .anyRequest().permitAll();//будь які роли
-//                .and()
-//                .formLogin()
-//                .loginPage("/registration")
-//                .loginProcessingUrl("/login")
-//                .usernameParameter("email")
-//                .passwordParameter("password")
-//                .failureUrl("/registration")
-//                .defaultSuccessUrl( "/community", true)
-//                .permitAll()
-//                .and()
-//                .logout().logoutUrl("/logout")
-//                .logoutSuccessUrl("/registration").permitAll();
 
-                http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
+
+        http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override

@@ -4,12 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ua.entity.User;
-import ua.entity.enums.UserRole;
+import ua.entity.enums.Role;
 import ua.repository.UserRepository;
 import ua.request.LoginRequest;
 import ua.restService.UserRestService;
 
 import java.util.List;
+
 
 @Service
 public class UserRestServiceImpl implements UserRestService {
@@ -22,9 +23,8 @@ public class UserRestServiceImpl implements UserRestService {
 
     @Override
     public User register(User user) {
-        user.setName(user.getName().toUpperCase());
         user.setEnabled(true);
-        user.setRole(UserRole.ADMIN_ROLE);
+        user.setRole(Role.ROLE_ADMIN);
         user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }

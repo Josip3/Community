@@ -1,7 +1,6 @@
 package ua.security;
 
 
-import com.mysql.jdbc.log.Log;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -30,14 +29,19 @@ public class TokenUtils {
         String username;
         try {
             final Claims claims = this.getClaimsFromToken(token);
-            username = claims.getSubject();
+//            username = claims.getSubject();
+              username = (String) claims.get("sub");
+              System.out.println("TRUE");
         }catch (Exception e){
             username = null;
+            System.out.println("FALSE");
+            e.printStackTrace();
         }
         return username;
     }
 
     //
+
     public Date getCreatedDateFromToken(String token){
         Date created;
 
@@ -65,10 +69,14 @@ public class TokenUtils {
 
     private Claims getClaimsFromToken(String token){
         Claims claims;
+        System.out.println(token + " token");
         try {
-            claims = (Claims) Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token);
+
+            claims =Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token).getBody();
+            System.out.println(Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token));
         } catch (Exception e){
             claims = null;
+//            e.printStackTrace();
         }
         return claims;
     }
@@ -78,31 +86,32 @@ public class TokenUtils {
     }
 
     private Date generationExpirationDate(){
-        System.out.println( new Date(System.currentTimeMillis()  * 10000));
-        return new Date(System.currentTimeMillis()  * 10000);
+        return new Date(System.currentTimeMillis() + 1000 * 10000);
     }
 
     private Boolean isTokenExpired(String token){
-        System.err.println("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFUCK");
         final Date expiration = this.getExpirationDateFromToken(token);
         return expiration.before(this.generationCurrentDate());
     }
 
     public String generateToken(UserDetails userDetails){
         Map<String,Object> claims = new HashMap<String, Object>();
-        claims.put("sub", userDetails.getUsername());
+        claims.put("sub", userDetails.getUsername() );
         claims.put("created",this.generationCurrentDate());
         return this.generateToken(claims);
     }
 
     private String generateToken(Map<String,Object> claims){
         return Jwts.builder().setClaims(claims).setExpiration(this.generationExpirationDate())
-                .signWith(SignatureAlgorithm.HS512,"AHEET-GOVNO-BLET").compact();
+                .signWith(SignatureAlgorithm.HS512,this.secret).compact();
     }
 
     public Boolean validateToken(String token,UserDetails userDetails){
         User user = (User) userDetails;
         final String username = this.getUsernameFromToken(token);
-        return (username.equals(user.getEmail())) && (this.isTokenExpired(token));
+
+        return (username.equals(user.getEmail())) && !(this.isTokenExpired(token));
+
+
     }
 }

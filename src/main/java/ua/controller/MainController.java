@@ -25,27 +25,27 @@ public class MainController {
 
 
 //    @RequestMapping(value = "/community",method = RequestMethod.GET)
-//    public String getUserPage(Model model, Principal principal){
+
+    //    public String getUserPage(Model model, Principal principal){
+//    }
 //    model.addAttribute("user",userRepository.findByName(principal.getName()));
 //        return "userPage";
-//    }
+    @RequestMapping(value="/id{id}", method = RequestMethod.GET)
+    public String findById(Model model, @PathVariable int id){
+        model.addAttribute("user",userService.findOne(id));
+        return "userPage";
+    }
 
-    @PreAuthorize("hasRole('')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/community",method = RequestMethod.GET)
     public String getUserPage(){
         return "content";
     }
-
     @RequestMapping(value = "/saveImage", method = RequestMethod.POST)
     public String saveImage(Principal principal,@RequestParam MultipartFile image){
         userService.addMainPhoto(image, userRepository.findByName(principal.getName()));
 
         return "redirect:/community";
-    }
-    @RequestMapping(value="/id{id}", method = RequestMethod.GET)
-    public String findById(Model model, @PathVariable int id){
-        model.addAttribute("user",userService.findOne(id));
-        return "userPage";
     }
 
 }

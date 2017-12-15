@@ -1,4 +1,4 @@
-package ua.dto;
+package ua.request.dto;
 
 /**
  *  Marker.

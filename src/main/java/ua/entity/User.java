@@ -1,15 +1,12 @@
 package ua.entity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ua.dto.Request;
-import ua.entity.enums.UserRole;
+import ua.request.dto.Request;
+import ua.entity.enums.Role;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -61,7 +58,7 @@ public class User implements UserDetails{
     @Getter@Setter private LocalDateTime dateOfBirth;
 
     @Enumerated
-    @Getter@Setter private UserRole role;
+    @Getter@Setter private Role role;
 
 
     @ManyToOne
@@ -87,12 +84,14 @@ public class User implements UserDetails{
     @Getter@Setter private List<Post> postList;
 
 
+
     //повертатиме роль юзера,викликаэться спрингом
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(role.name()));
         return authorities;
+//        return new ArrayList<GrantedAuthority>(Arrays.asList(new SimpleGrantedAuthority(role.name())));
 
     }
 

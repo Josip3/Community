@@ -3,15 +3,12 @@ package ua.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import org.springframework.web.multipart.MultipartFile;
 import ua.entity.User;
-import ua.entity.enums.UserRole;
+import ua.entity.enums.Role;
 import ua.repository.UserRepository;
 import ua.request.MyPageRequest;
 import ua.service.UserService;
@@ -35,7 +32,7 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         user.setName(user.getName().toUpperCase());
         user.setEnabled(true);
-        user.setRole(UserRole.ADMIN_ROLE);
+        user.setRole(Role.ROLE_ADMIN);
         user.setPassword(encoder.encode(user.getPassword()));
         for (User email:
                 ofNullable(findAlls()).orElse(new ArrayList<>())) {

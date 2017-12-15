@@ -1,7 +1,9 @@
 ua\service\GroupService.class
 ua\entity\GanreMusic.class
+ua\request\delete.class
 ua\service\impl\UserServiceImpl.class
 ua\controller\UserRestController.class
+ua\entity\enums\Role.class
 ua\service\MusicService.class
 ua\config\ApplicationWebMvcConfig.class
 ua\security\TokenUtils.class
@@ -24,9 +26,8 @@ ua\service\impl\UserDetailsServiceImpl.class
 ua\SampleWebJspApplication.class
 ua\service\CityService.class
 ua\service\impl\MusicServiceImpl.class
-ua\entity\enums\UserRole.class
+ua\request\dto\Request.class
 ua\repository\GroupRepository.class
-ua\dto\Request.class
 ua\service\MessageService.class
 ua\repository\PhotoRepository.class
 ua\entity\City.class

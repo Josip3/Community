@@ -23,7 +23,6 @@ public class AdminController {
         return "adminPage";
     }
 
-    @PreAuthorize("hasRole('ADMIN_ROLE')")
     @RequestMapping(value = "/user/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable Integer id){
         userService.delete(id);

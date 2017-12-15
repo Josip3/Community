@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 import ua.entity.User;
 import ua.request.LoginRequest;
+import ua.request.delete;
 import ua.restService.UserRestService;
 import ua.security.TokenUtils;
 import ua.service.UserService;
@@ -43,7 +44,6 @@ public class UserRestController {
     @Autowired
     private UserRestService userRestService;
 
-//    @PreAuthorize("hasRole('USER_ROLE')")
     @RequestMapping(method = RequestMethod.PUT,value = "/save")
     public User register(@RequestBody User user){
         return userRestService.register(user);
@@ -51,16 +51,23 @@ public class UserRestController {
 
     @RequestMapping(method = RequestMethod.POST,value = "/login")
     public ResponseEntity<?> authOnRequest(@RequestBody LoginRequest loginRequest){
-        System.err.println(loginRequest.getEmail()+loginRequest.getPassword());
-        Authentication authentication =
+       //о це вроді не робить
+         Authentication authentication =
                 this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(loginRequest.getEmail());
-
         String token = this.tokenUtils.generateToken(userDetails);
-        System.err.println(token + " token");
+        System.err.println("USER REST CONTROLLER : : 'authOnRequest' " + token + " token");
+        System.err.println("USER REST CONTROLLER : : 'authOnRequest' " + loginRequest.getEmail()+loginRequest.getPassword());
         return  ResponseEntity.ok(token);
     }
+
+    @RequestMapping(method = RequestMethod.DELETE,value = "/delete")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public boolean delete(@RequestBody delete request){
+        return userRestService.delete(request.getId());
+    }
+
 
 
 

@@ -13,6 +13,7 @@ C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\s
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\MessageServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\validators\ValidationConstants.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\CountryRepository.java
+C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\enums\Role.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\MusicServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\enums\TypePhoto.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\User.java
@@ -33,9 +34,10 @@ C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\c
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Group.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Post.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\security\AuthenticationTokenFilter.java
-C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\enums\UserRole.java
+C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\request\dto\Request.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\ContentTypeServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\controller\UserRestController.java
+C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\request\delete.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\City.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\MessageRepository.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\MusicRepository.java
@@ -52,7 +54,6 @@ C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\r
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Photo.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Message.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\CountryService.java
-C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\dto\Request.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\GanreMusic.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\controller\UserController.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\UserRepository.java
