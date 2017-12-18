@@ -19,8 +19,6 @@ public interface UserService {
 
     User findByEmail(String email);
 
-    Page<User> findAll(MyPageRequest myPageRequest);
-
     void addMainPhoto(MultipartFile multipartFile, User user);
 
 

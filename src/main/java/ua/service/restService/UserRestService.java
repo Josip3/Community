@@ -1,4 +1,4 @@
-package ua.restService;
+package ua.service.restService;
 
 import ua.entity.User;
 import ua.request.LoginRequest;

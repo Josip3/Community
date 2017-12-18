@@ -42,7 +42,7 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
     //перевірка при кожному запиті
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.err.println("do  filter");
+
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String authToken = httpRequest.getHeader(this.tokenHeader);
 

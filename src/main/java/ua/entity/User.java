@@ -22,9 +22,7 @@ import static ua.service.validators.ValidationConstants.*;
 @Entity
 @Table(name = "_USER_")
 public class User implements UserDetails{
-    //implements UserDetails - секюрете
-    //paternMVC
-    //JAVA8//stream
+
 
     public User(){}
 

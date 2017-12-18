@@ -20,8 +20,6 @@ import javax.validation.Valid;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private CountryService countryService;
@@ -31,28 +29,14 @@ public class UserController {
         binder.registerCustomEditor(Country.class, new CountryEditor(countryService));
     }
 
-
-    @RequestMapping(value = "/reg",method = RequestMethod.GET)
-    public String reg(Model model){
-        model.addAttribute("user",new User());
-        model.addAttribute("country",countryService.findAll());
-        return "registration";
-    }
-
     @RequestMapping(value = "/",    method = RequestMethod.GET)
     public String home(){
-        return "redirect:/reg";
-    }
-
-    @RequestMapping(value = "/save",method = RequestMethod.POST)
-    public String saveUser(@ModelAttribute  User user){
-        userService.save(user);
-        return "redirect:/reg";
+        return "redirect:/registration";
     }
 
     @RequestMapping(value = "/registration",method = RequestMethod.GET)
     public String getRegistrationPage(){
-        return "registrationH";
+        return "registration";
     }
 
 

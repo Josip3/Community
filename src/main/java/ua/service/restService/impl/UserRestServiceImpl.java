@@ -1,4 +1,4 @@
-package ua.restService.impl;
+package ua.service.restService.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -7,7 +7,7 @@ import ua.entity.User;
 import ua.entity.enums.Role;
 import ua.repository.UserRepository;
 import ua.request.LoginRequest;
-import ua.restService.UserRestService;
+import ua.service.restService.UserRestService;
 
 import java.util.List;
 

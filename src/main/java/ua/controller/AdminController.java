@@ -14,7 +14,7 @@ import ua.service.UserService;
 public class AdminController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
 
     @RequestMapping(value = "/login/admin",method = RequestMethod.GET)

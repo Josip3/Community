@@ -1,7 +1,7 @@
 package ua.config;
 
 import org.apache.coyote.http11.AbstractHttp11Protocol;
-import org.springframework.boot.context.embedded.MultipartConfigFactory;
+//import org.springframework.boot.context.embedded.MultipartConfigFactory;
 import org.springframework.boot.context.embedded.tomcat.TomcatConnectorCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
@@ -40,13 +40,13 @@ public class ApplicationWebMvcConfig extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
-    @Bean
-    MultipartConfigElement multipartConfigElement() {
-        MultipartConfigFactory factory = new MultipartConfigFactory();
-        factory.setMaxFileSize("512000MB");
-        factory.setMaxRequestSize("512000MB");
-        return factory.createMultipartConfig();
-    }
+//    @Bean
+//    MultipartConfigElement multipartConfigElement() {
+//        MultipartConfigFactory factory = new MultipartConfigFactory();
+//        factory.setMaxFileSize("512000MB");
+//        factory.setMaxRequestSize("512000MB");
+//        return factory.createMultipartConfig();
+//    }
 
 
 

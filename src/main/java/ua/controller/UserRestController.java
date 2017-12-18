@@ -2,7 +2,6 @@ package ua.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,12 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import ua.entity.User;
 import ua.request.LoginRequest;
 import ua.request.delete;
-import ua.restService.UserRestService;
+import ua.service.restService.UserRestService;
 import ua.security.TokenUtils;
-import ua.service.UserService;
-import ua.service.impl.UserDetailsServiceImpl;
-
-import java.util.List;
 
 
 @CrossOrigin
@@ -39,7 +34,7 @@ public class UserRestController {
     private TokenUtils tokenUtils;
 
     @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    private UserDetailsService userDetailsService;
 
     @Autowired
     private UserRestService userRestService;

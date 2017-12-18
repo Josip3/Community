@@ -56,25 +56,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll();//будь які роли
 
 
-
         http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
-    @Override
-    public     void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring()
-                .antMatchers("/js/**", "/css/**", "/img/**", "/error/**", "/gallery/**", "/file/**", "/game/**");
-    }
-
-
-    @Autowired
-    public     void configureGlobal(AuthenticationManagerBuilder auth, UserDetailsServiceImpl userDetailsServiceImpl, PasswordEncoder encoder) throws Exception {
-      auth.inMemoryAuthentication()
-                .withUser("admin").password("admin").roles("ADMIN_ROLE");
-        auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(encoder);
-
-    }
 
     @Bean
     public AuthenticationManager authenticationManager() throws Exception {

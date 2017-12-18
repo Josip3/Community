@@ -42,8 +42,6 @@ public class UserServiceImpl implements UserService {
                 throw new NullPointerException("Вже э такий");
         }
 
-
-
     }
 
     @Override
@@ -61,11 +59,7 @@ public class UserServiceImpl implements UserService {
         userRepository.delete(id);
     }
 
-    @Override
-    public Page<User> findAll(MyPageRequest page) {
-        PageRequest pageRequest = new PageRequest(page.getNumberPage(),page.getNumberPage());
-        return userRepository.findAll(pageRequest);
-    }
+
 
     @Override
     public void addMainPhoto(MultipartFile multipartFile, User user) {

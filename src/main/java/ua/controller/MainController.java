@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import ua.repository.UserRepository;
+import ua.security.TokenUtils;
 import ua.service.UserService;
 
 import java.security.Principal;
@@ -24,12 +25,6 @@ public class MainController {
     private UserService userService;
 
 
-//    @RequestMapping(value = "/community",method = RequestMethod.GET)
-
-    //    public String getUserPage(Model model, Principal principal){
-//    }
-//    model.addAttribute("user",userRepository.findByName(principal.getName()));
-//        return "userPage";
     @RequestMapping(value="/id{id}", method = RequestMethod.GET)
     public String findById(Model model, @PathVariable int id){
         model.addAttribute("user",userService.findOne(id));
@@ -41,6 +36,7 @@ public class MainController {
     public String getUserPage(){
         return "content";
     }
+
     @RequestMapping(value = "/saveImage", method = RequestMethod.POST)
     public String saveImage(Principal principal,@RequestParam MultipartFile image){
         userService.addMainPhoto(image, userRepository.findByName(principal.getName()));
