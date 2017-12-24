@@ -135,22 +135,21 @@
                 $('#go').click(function(){
                     var login = $('#mail').val();
                     var pass = $('#pass').val();
+
                     var loginReq = {
                         'email':login,
                         'password':pass
                     };
+
+
                     $.ajax({
-                        'url':'http://localhost:80/registration/login',
-                        'type':"POST",
-                        'contentType':'application/json',
-                        'dataType':'json',
-                        'data':JSON.stringify(loginReq),
+                        url:'http://localhost:80/registration/login',
+                        type:"POST",
+                        contentType:'application/json',
+                        dataType:'json',
+                        data:JSON.stringify(loginReq),
                         success:function(data){
-
-                                alert('Welcom to our webSite');
                             console.log(data);
-
-
                         }
 
                     });

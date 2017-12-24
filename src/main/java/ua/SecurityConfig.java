@@ -1,4 +1,4 @@
-package ua.config;
+package ua;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

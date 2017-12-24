@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import ua.repository.UserRepository;
+import ua.request.dto.Request;
 import ua.security.TokenUtils;
 import ua.service.UserService;
 

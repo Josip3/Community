@@ -7,6 +7,7 @@ ua\entity\enums\Role.class
 ua\service\MusicService.class
 ua\config\ApplicationWebMvcConfig.class
 ua\security\TokenUtils.class
+ua\SecurityConfig.class
 ua\repository\MessageRepository.class
 ua\service\PhotoService.class
 ua\security\AuthenticationTokenFilter.class
@@ -19,7 +20,7 @@ ua\entity\Message.class
 ua\service\CountryService.class
 ua\service\impl\PhotoServiceImpl.class
 ua\repository\CountryRepository.class
-ua\restService\UserRestService.class
+ua\service\restService\UserRestService.class
 ua\controller\AdminController.class
 ua\controller\UserController.class
 ua\service\impl\UserDetailsServiceImpl.class
@@ -31,7 +32,6 @@ ua\repository\GroupRepository.class
 ua\service\MessageService.class
 ua\repository\PhotoRepository.class
 ua\entity\City.class
-ua\config\SecurityConfig.class
 ua\service\impl\GanreMusicServiceImpl.class
 ua\entity\User.class
 ua\request\MyPageRequest.class
@@ -39,7 +39,6 @@ ua\repository\GanreMusicRepository.class
 ua\service\ContentTypeService.class
 ua\entity\Music.class
 ua\entity\Country.class
-ua\restService\impl\UserRestServiceImpl.class
 ua\entity\Post.class
 ua\repository\UserRepository.class
 ua\service\impl\GroupServiceImpl.class
@@ -57,3 +56,4 @@ ua\entity\ContentType.class
 ua\service\impl\ContentTypeServiceImpl.class
 ua\request\LoginRequest.class
 ua\service\impl\MessageServiceImpl.class
+ua\service\restService\impl\UserRestServiceImpl.class

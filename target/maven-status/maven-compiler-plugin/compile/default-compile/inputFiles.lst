@@ -5,7 +5,6 @@ C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\c
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\request\MyPageRequest.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\SampleWebJspApplication.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\request\LoginRequest.java
-C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\restService\impl\UserRestServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\controller\MainController.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\GanreService.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\ContentType.java
@@ -17,14 +16,16 @@ C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\e
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\MusicServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\enums\TypePhoto.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\User.java
+C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\restService\impl\UserRestServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\UserServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\GroupRepository.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Country.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Music.java
-C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\restService\UserRestService.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\MessageService.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\PhotoService.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\ContentTypeRepository.java
+C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\restService\UserRestService.java
+C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\SecurityConfig.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\config\Beans.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\ContentTypeService.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\GroupService.java
@@ -49,7 +50,6 @@ C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\s
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\security\EntryPointUnauthorizedHandler.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\impl\CityServiceImpl.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\service\UserService.java
-C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\config\SecurityConfig.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\repository\GanreMusicRepository.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Photo.java
 C:\Users\Назарка\Documents\GitHub\SocialNetwork\SocialNetwork\src\main\java\ua\entity\Message.java

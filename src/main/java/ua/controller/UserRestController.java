@@ -39,6 +39,7 @@ public class UserRestController {
     @Autowired
     private UserRestService userRestService;
 
+
     @RequestMapping(method = RequestMethod.PUT,value = "/save")
     public User register(@RequestBody User user){
         return userRestService.register(user);
@@ -56,6 +57,7 @@ public class UserRestController {
         System.err.println("USER REST CONTROLLER : : 'authOnRequest' " + loginRequest.getEmail()+loginRequest.getPassword());
         return  ResponseEntity.ok(token);
     }
+
 
     @RequestMapping(method = RequestMethod.DELETE,value = "/delete")
     @PreAuthorize("hasRole('ROLE_ADMIN')")

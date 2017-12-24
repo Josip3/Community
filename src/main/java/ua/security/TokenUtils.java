@@ -29,7 +29,6 @@ public class TokenUtils {
         String username;
         try {
             final Claims claims = this.getClaimsFromToken(token);
-//            username = claims.getSubject();
               username = (String) claims.get("sub");
               System.out.println("TRUE");
         }catch (Exception e){
@@ -39,8 +38,6 @@ public class TokenUtils {
         }
         return username;
     }
-
-    //
 
     public Date getCreatedDateFromToken(String token){
         Date created;
@@ -56,7 +53,6 @@ public class TokenUtils {
 
     public Date getExpirationDateFromToken(String token){
         Date expiration;
-
         try {
             final Claims claims = this.getClaimsFromToken(token);
             expiration = claims.getExpiration();
@@ -109,9 +105,6 @@ public class TokenUtils {
     public Boolean validateToken(String token,UserDetails userDetails){
         User user = (User) userDetails;
         final String username = this.getUsernameFromToken(token);
-
         return (username.equals(user.getEmail())) && !(this.isTokenExpired(token));
-
-
     }
 }
