@@ -3,17 +3,15 @@ package ua.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import ua.editor.CountryEditor;
 import ua.entity.Country;
 import ua.service.CountryService;
 
 
 @CrossOrigin
-@Controller
+@RestController
+@RequestMapping("/route")
 public class RouteController {
 
 
@@ -25,13 +23,13 @@ public class RouteController {
         binder.registerCustomEditor(Country.class, new CountryEditor(countryService));
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping()
     public String home() {
 //        return "redirect:/registration";
         return "front/dist/index";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    @GetMapping("/registration")
     public String getRegistrationPage() {
         return "registration";
     }
