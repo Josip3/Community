@@ -70,6 +70,10 @@ public class UserServiceImpl implements UserService {
         userRepository.delete(id);
     }
 
+    @Override
+    public User findByName(String name) {
+        return userRepository.findByName(name);
+    }
 
     @Override
     public void addMainPhoto(MultipartFile multipartFile, User user) {
@@ -99,11 +103,7 @@ public class UserServiceImpl implements UserService {
     //головне фото на сторінці юзера
     @Override
     public User findByEmail(String email) {
-        return findAlls()
-                .stream()
-                .filter(user -> user.getEmail().equals(email))
-                .findFirst()
-                .get();
+        return userRepository.findByEmail(email);
     }
 
 

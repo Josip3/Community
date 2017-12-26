@@ -3,6 +3,7 @@ package ua.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,6 +12,8 @@ import ua.entity.User;
 import ua.request.delete;
 import ua.service.UserService;
 import ua.service.restService.UserRestService;
+
+import java.security.Principal;
 
 import static org.springframework.http.HttpStatus.OK;
 
@@ -38,7 +41,8 @@ public class UserRestController {
     @Autowired
     private UserService userService;
 
-
+// ResponseEntity<User> обгортка для респонсу (в даному випадку відправляє юзера і статус 200(ОК))
+// Анотація, щоб на писати метод, тільки мапування
     @PutMapping("/save")
     public ResponseEntity<User> register(@RequestBody User user) {
         return new ResponseEntity<>(userRestService.register(user), OK);
@@ -83,4 +87,9 @@ public class UserRestController {
     private ResponseEntity<User> updateAge(@RequestBody User user){
         return new ResponseEntity<>(userService.updateAge(user),OK);
     }
+    @GetMapping("/get-user")
+    private ResponseEntity<User> getUser(Principal principal){
+        return new ResponseEntity<>(userService.findByName(principal.getName()), HttpStatus.OK);
+    }
+
 }
