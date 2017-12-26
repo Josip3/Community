@@ -41,6 +41,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User updateName(User user) {
+        return update(userRepository.findOne(user.getId()).setName(user.getName()));
+    }
+
+    @Override
+    public User updateLastName(User user) {
+        return update(userRepository.findOne(user.getId()).setLastName(user.getLastName()));
+    }
+
+    @Override
+    public User updateAge(User user) {
+        return update(userRepository.findOne(user.getId()).setAge(user.getAge()));
+    }
+
+    @Override
     public List<User> findAlls() {
         return userRepository.findAll();
     }
