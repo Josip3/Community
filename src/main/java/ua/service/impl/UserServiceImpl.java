@@ -1,23 +1,15 @@
 package ua.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import org.springframework.web.multipart.MultipartFile;
 import ua.entity.User;
 import ua.entity.enums.Role;
 import ua.repository.UserRepository;
-import ua.request.MyPageRequest;
 import ua.service.UserService;
 
-
-import java.util.ArrayList;
 import java.util.List;
-
-import static java.util.Optional.ofNullable;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -34,14 +26,18 @@ public class UserServiceImpl implements UserService {
         user.setEnabled(true);
         user.setRole(Role.ROLE_ADMIN);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        for (User email:
-                ofNullable(findAlls()).orElse(new ArrayList<>())) {
-            if(!user.getEmail().equals(email.getEmail()))
-                userRepository.save(user);
-            else
-                throw new NullPointerException("Вже э такий");
-        }
+        if (userRepository.findByEmail(user.getEmail()) != null)
+            throw new NullPointerException("Вже э такий");
+        else
+            userRepository.save(user);
 
+    }
+
+    @Override
+    public User update(User user) {
+        if (userRepository.findOne(user.getId()) != null)
+            return userRepository.save(user);
+        return null;
     }
 
     @Override
@@ -58,7 +54,6 @@ public class UserServiceImpl implements UserService {
     public void delete(int id) {
         userRepository.delete(id);
     }
-
 
 
     @Override
