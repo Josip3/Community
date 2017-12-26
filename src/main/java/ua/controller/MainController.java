@@ -29,9 +29,9 @@ public class MainController {
     }
 
     @PostMapping("/saveImage")
-    public String saveImage(Principal principal, @RequestParam MultipartFile image) {
+    public ResponseEntity<Boolean> saveImage(Principal principal, @RequestParam MultipartFile image) {
         userService.addMainPhoto(image, userRepository.findByName(principal.getName()));
-        return "redirect:/community";
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
 }

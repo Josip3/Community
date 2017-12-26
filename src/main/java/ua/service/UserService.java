@@ -29,4 +29,6 @@ public interface UserService {
 
     User updateAge(User user);
 
+    User findByName(String name);
+
 }
