@@ -1,8 +1,6 @@
 package ua.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import ua.repository.UserRepository;
-import ua.request.dto.Request;
 import ua.service.UserService;
 
 import java.security.Principal;
@@ -25,20 +22,20 @@ public class MainController {
     private UserService userService;
 
 
-    @RequestMapping(value="/id{id}", method = RequestMethod.GET)
-    public String findById(Model model, @PathVariable int id){
-        model.addAttribute("user",userService.findOne(id));
+    @RequestMapping(value = "/id{id}", method = RequestMethod.GET)
+    public String findById(Model model, @PathVariable int id) {
+        model.addAttribute("user", userService.findOne(id));
         return "userPage";
     }
 
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/community",method = RequestMethod.GET)
-    public String getUserPage(){
+    //    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/community", method = RequestMethod.GET)
+    public String getUserPage() {
         return "content";
     }
 
     @RequestMapping(value = "/saveImage", method = RequestMethod.POST)
-    public String saveImage(Principal principal,@RequestParam MultipartFile image){
+    public String saveImage(Principal principal, @RequestParam MultipartFile image) {
         userService.addMainPhoto(image, userRepository.findByName(principal.getName()));
 
         return "redirect:/community";
