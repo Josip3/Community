@@ -69,17 +69,19 @@ export class AuthInterceptor implements HttpInterceptor {
     } else {
       if (!isNullOrUndefined(localStorage.getItem('access_token')) && localStorage.getItem('access_token') != '') {
         authKey = 'Bearer ' + localStorage.getItem('access_token');
-      } else if (req.url.indexOf('grant_type') != -1) {
+      } else {
         authKey = 'Basic  Y2xpZW50YXBwOjEyMzQ1Ng==';
-        if (temp.headers.keys().indexOf('Content-Type') != -1) {
-          if (temp.headers.get('Content-Type').indexOf('application/x-www-form-urlencoded') == -1) {
-            headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/x-www-form-urlencoded');
+        if (req.url.indexOf('grant_type') != -1) {
+          if (temp.headers.keys().indexOf('Content-Type') != -1) {
+            if (temp.headers.get('Content-Type').indexOf('application/x-www-form-urlencoded') == -1) {
+              headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/x-www-form-urlencoded');
+            }
+            if (temp.headers.get('Content-Type').indexOf('application/json') == -1) {
+              headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/json');
+            }
+          } else {
+            headers = headers.append('Content-Type', 'application/x-www-form-urlencoded;application/json');
           }
-          if (temp.headers.get('Content-Type').indexOf('application/json') == -1) {
-            headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/json');
-          }
-        } else {
-          headers = headers.append('Content-Type', 'application/x-www-form-urlencoded;application/json');
         }
       }
       if (headers.keys().indexOf('Content-Type') != -1) {
