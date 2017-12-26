@@ -11,6 +11,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 
 const routes: Routes = [
+  {path: '', redirectTo: 'sing-in', pathMatch: 'full'},
   {path: 'admin', component: AdminComponent},
   {path: 'sing-in', component: RegistrationComponent},
   {path: 'sign-up', component: RegistrationComponent},
