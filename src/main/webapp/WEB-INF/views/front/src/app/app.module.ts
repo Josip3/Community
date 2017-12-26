@@ -12,13 +12,14 @@ import {FormsModule} from "@angular/forms";
 import {AuthInterceptor} from "../shared/auth-inteceptor";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CanActiveAdmin} from "../shared/can-active/can-active-admin";
+import {CanActiveLogin} from "../shared/can-active/can-active-login";
 
 const routes: Routes = [
   {path: '', redirectTo: 'sing-in', pathMatch: 'full'},
   {path: 'login', redirectTo: 'sing-in', pathMatch: 'full'},
   {path: 'admin', component: AdminComponent, canActivate: [CanActiveAdmin]},
-  {path: 'sing-in', component: RegistrationComponent},
-  {path: 'sign-up', component: RegistrationComponent},
+  {path: 'sing-in', component: RegistrationComponent, canActivate: [CanActiveLogin]},
+  {path: 'sign-up', component: RegistrationComponent, canActivate: [CanActiveLogin]},
   {path: 'community', component: ContentComponent},
   {path: 'user/:id', component: UserComponent},
 ];
@@ -39,6 +40,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {useHash: true}),
   ],
   providers: [
+    CanActiveLogin,
     CanActiveAdmin,
     {
       provide: HTTP_INTERCEPTORS,
