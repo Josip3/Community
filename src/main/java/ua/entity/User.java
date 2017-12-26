@@ -1,5 +1,7 @@
 package ua.entity;
+
 import lombok.*;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,67 +23,54 @@ import static ua.service.validators.ValidationConstants.*;
 @ToString
 @Entity
 @Table(name = "_USER_")
-public class User implements UserDetails{
-
-
-    public User(){}
+public class User implements UserDetails {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter@Setter private int id;
-
-    @Getter@Setter private int age;
-
-    @Getter@Setter private boolean isEnabled;
-
-    @Getter@Setter private String name;
-
-    @Getter@Setter private String lastName;
-
-    @Getter@Setter private String phoneNumber;
-
-    @Column(name = "email",unique = true,nullable = false)
-    @NotNull(message = NULL_MESSAGE,groups = Request.class)
+    private Integer id;
+    private Integer age;
+    private Boolean isEnabled;
+    private String name;
+    private String lastName;
+    private String phoneNumber;
+    @Column(name = "email", unique = true, nullable = false)
+    @NotNull(message = NULL_MESSAGE, groups = Request.class)
     @Size(min = EMAIL_MIN_SIZE, max = EMAIL_MAX_SIZE, groups = Request.class)
-    @Pattern(regexp = EMAIL_PATTERN,message = EMAIL_PATTERN_MESSAGE, groups = Request.class)
-    @Getter@Setter private String email;
-
-    @Getter@Setter private String address;
-
-    @Getter@Setter private String password;
-
-    @Getter@Setter private String mainPhoto;
-
-    @Getter@Setter private LocalDateTime dateOfBirth;
-
+    @Pattern(regexp = EMAIL_PATTERN, message = EMAIL_PATTERN_MESSAGE, groups = Request.class)
+    private String email;
+    private String address;
+    private String password;
+    private String mainPhoto;
+    @JsonIgnore
+    private LocalDateTime dateOfBirth;
     @Enumerated
-    @Getter@Setter private Role role;
-
-
+    private Role role;
+    @JsonIgnore
     @ManyToOne
-    @Getter@Setter private Country userCountry;
-
+    private Country userCountry;
+    @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "GROUP_FROM_USER",joinColumns = @JoinColumn(name = "ID_USER"),inverseJoinColumns = @JoinColumn(name = "ID_GROUP"))
-    @Getter@Setter private List<Group> groupList;
-
+    @JoinTable(name = "GROUP_FROM_USER", joinColumns = @JoinColumn(name = "ID_USER"), inverseJoinColumns = @JoinColumn(name = "ID_GROUP"))
+    private List<Group> groupList;
+    @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "MUSIC_FROM_USER",joinColumns = @JoinColumn(name = "ID_USER"),inverseJoinColumns = @JoinColumn(name = "ID_MUSIC"))
-    @Getter@Setter private List<Music> musicList;
-
+    @JoinTable(name = "MUSIC_FROM_USER", joinColumns = @JoinColumn(name = "ID_USER"), inverseJoinColumns = @JoinColumn(name = "ID_MUSIC"))
+    private List<Music> musicList;
+    @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "PHOTO_FROM_USER",joinColumns = @JoinColumn(name = "ID_USER"),inverseJoinColumns = @JoinColumn(name = "ID_PHOTO"))
-    @Getter@Setter private List<Photo> photoList;
-
+    @JoinTable(name = "PHOTO_FROM_USER", joinColumns = @JoinColumn(name = "ID_USER"), inverseJoinColumns = @JoinColumn(name = "ID_PHOTO"))
+    private List<Photo> photoList;
+    @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "USER_MESSAGE",joinColumns = @JoinColumn(name = "ID_USER"),inverseJoinColumns = @JoinColumn(name = "ID_MESSAGE"))
-    @Getter@Setter private List<Message> messageList;
-
+    @JoinTable(name = "USER_MESSAGE", joinColumns = @JoinColumn(name = "ID_USER"), inverseJoinColumns = @JoinColumn(name = "ID_MESSAGE"))
+    private List<Message> messageList;
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
-    @Getter@Setter private List<Post> postList;
+    private List<Post> postList;
 
-
+    public User() {
+    }
 
     //повертатиме роль юзера,викликаэться спрингом
     @Override
@@ -118,5 +107,168 @@ public class User implements UserDetails{
     @Override
     public boolean isEnabled() {
         return isEnabled;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public User setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public User setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public User setAge(Integer age) {
+        this.age = age;
+        return this;
+    }
+
+    public Boolean getEnabled() {
+        return isEnabled;
+    }
+
+    public User setEnabled(Boolean enabled) {
+        isEnabled = enabled;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public User setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public User setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public User setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public User setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public User setAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public String getMainPhoto() {
+        return mainPhoto;
+    }
+
+    public User setMainPhoto(String mainPhoto) {
+        this.mainPhoto = mainPhoto;
+        return this;
+    }
+
+    public LocalDateTime getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public User setDateOfBirth(LocalDateTime dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+        return this;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public User setRole(Role role) {
+        this.role = role;
+        return this;
+    }
+
+    public Country getUserCountry() {
+        return userCountry;
+    }
+
+    public User setUserCountry(Country userCountry) {
+        this.userCountry = userCountry;
+        return this;
+    }
+
+    public List<Group> getGroupList() {
+        return groupList;
+    }
+
+    public User setGroupList(List<Group> groupList) {
+        this.groupList = groupList;
+        return this;
+    }
+
+    public List<Music> getMusicList() {
+        return musicList;
+    }
+
+    public User setMusicList(List<Music> musicList) {
+        this.musicList = musicList;
+        return this;
+    }
+
+    public List<Photo> getPhotoList() {
+        return photoList;
+    }
+
+    public User setPhotoList(List<Photo> photoList) {
+        this.photoList = photoList;
+        return this;
+    }
+
+    public List<Message> getMessageList() {
+        return messageList;
+    }
+
+    public User setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
+        return this;
+    }
+
+    public List<Post> getPostList() {
+        return postList;
+    }
+
+    public User setPostList(List<Post> postList) {
+        this.postList = postList;
+        return this;
     }
 }
