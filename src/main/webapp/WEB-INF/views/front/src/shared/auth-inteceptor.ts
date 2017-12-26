@@ -67,7 +67,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (temp.headers.keys().indexOf('multipart') != -1 || temp.headers.keys().indexOf('enctype') != -1) {
       headers = headers.append('enctype', 'form-data/multipart');
     } else {
-      if (!isNullOrUndefined(localStorage.getItem('access_token')) && localStorage.getItem('access_token') != '') {
+      if ((!isNullOrUndefined(localStorage.getItem('access_token'))) && (localStorage.getItem('access_token') != '')) {
         authKey = 'Bearer ' + localStorage.getItem('access_token');
       } else {
         authKey = 'Basic  Y2xpZW50YXBwOjEyMzQ1Ng==';
@@ -80,7 +80,7 @@ export class AuthInterceptor implements HttpInterceptor {
               headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/json');
             }
           } else {
-            headers = headers.append('Content-Type', 'application/x-www-form-urlencoded;application/json');
+            headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
           }
         }
       }
