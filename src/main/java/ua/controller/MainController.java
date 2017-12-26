@@ -1,19 +1,20 @@
 package ua.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import ua.entity.User;
 import ua.repository.UserRepository;
 import ua.service.UserService;
 
 import java.security.Principal;
 
-@Controller
+@RestController
+@RequestMapping("/main")
 public class MainController {
 
     @Autowired
@@ -22,22 +23,14 @@ public class MainController {
     private UserService userService;
 
 
-    @RequestMapping(value = "/id{id}", method = RequestMethod.GET)
-    public String findById(Model model, @PathVariable int id) {
-        model.addAttribute("user", userService.findOne(id));
-        return "userPage";
+    @GetMapping("/{id}")
+    public ResponseEntity<User> findOne(@PathVariable Integer id) {
+        return new ResponseEntity<>(userService.findOne(id), HttpStatus.OK);
     }
 
-    //    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/community", method = RequestMethod.GET)
-    public String getUserPage() {
-        return "content";
-    }
-
-    @RequestMapping(value = "/saveImage", method = RequestMethod.POST)
+    @PostMapping("/saveImage")
     public String saveImage(Principal principal, @RequestParam MultipartFile image) {
         userService.addMainPhoto(image, userRepository.findByName(principal.getName()));
-
         return "redirect:/community";
     }
 

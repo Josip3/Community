@@ -1,32 +1,35 @@
 package ua.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import ua.entity.User;
 import ua.service.UserService;
 
-@Controller
+import java.util.List;
+
+
+@RestController
+@RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
     private UserService userService;
 
 
-    @RequestMapping(value = "/login/admin",method = RequestMethod.GET)
-    public String test(Model model){
-        model.addAttribute("users",userService.findAlls());
-        return "adminPage";
+    @GetMapping("/get-all-users")
+    public ResponseEntity<List<User>> getUsers(){
+        return new ResponseEntity<>(userService.findAlls(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/user/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable Integer id){
         userService.delete(id);
-        return "redirect:/login/admin";
+        return "redirect:/admin/get-all-users";
     }
 
 

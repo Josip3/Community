@@ -43,7 +43,7 @@ public class UserRestController {
 
 
 
-    @RequestMapping(method = RequestMethod.PUT,value = "/save")
+    @PutMapping("/save")
     public User register(@RequestBody User user){
         return userRestService.register(user);
     }
@@ -62,8 +62,8 @@ public class UserRestController {
 //    }
 
 
-    @RequestMapping(method = RequestMethod.DELETE,value = "/delete")
-    public boolean delete(@RequestBody delete request){
+    @DeleteMapping("/delete")
+    public Boolean delete(@RequestBody delete request){
         return userRestService.delete(request.getId());
     }
 
