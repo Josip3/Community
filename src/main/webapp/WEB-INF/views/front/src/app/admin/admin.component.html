@@ -31,12 +31,12 @@
           <!--<c:forEach items="${users}" var="user">-->
 
           <h5 class="userList">
-            <label>ID : </label> {{wrapperHTML(user.id)}} <br>
-            <label>Имя : </label> {{wrapperHTML(user.name)}} <br>
-            <label>Фамилия : </label> {{wrapperHTML(user.lastName)}} <br>
-            <label>Возраст : </label> {{wrapperHTML(user.age)}} <br>
-            <label>Почта : </label> {{wrapperHTML(user.email)}} <br>
-            <label>Пароль : </label> {{wrapperHTML(user.password)}} <br>
+            <label>ID : </label> {{ wrapperHTML(user.id) }} <br>
+            <label>Имя : </label> {{ wrapperHTML(user.name) }} <br>
+            <label>Фамилия : </label> {{ wrapperHTML(user.lastName) }} <br>
+            <label>Возраст : </label> {{ wrapperHTML(user.age) }} <br>
+            <label>Почта : </label> {{ wrapperHTML(user.email) }} <br>
+            <label>Пароль : </label> {{ wrapperHTML(user.password) }} <br>
           </h5>
 
           <input type="submit" value="delete user" (click)="delete(user)">

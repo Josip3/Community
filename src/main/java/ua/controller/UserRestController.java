@@ -58,9 +58,9 @@ public class UserRestController {
 //    }
 
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<Boolean> delete(@RequestBody delete request) {
-        return new ResponseEntity<>(userRestService.delete(request.getId()), OK);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable Integer id) {
+        return new ResponseEntity<>(userRestService.delete(id), OK);
     }
 
 
@@ -69,5 +69,18 @@ public class UserRestController {
         return new ResponseEntity<>(userService.update(user), OK);
     }
 
+    @PutMapping("/update/name")
+    private ResponseEntity<User> updateName(@RequestBody User user){
+        return new ResponseEntity<>(userService.updateName(user),OK);
+    }
 
+    @PutMapping("/update/last-name")
+    private ResponseEntity<User> updateLastName(@RequestBody User user){
+        return new ResponseEntity<>(userService.updateLastName(user),OK);
+    }
+
+    @PutMapping("/update/age")
+    private ResponseEntity<User> updateAge(@RequestBody User user){
+        return new ResponseEntity<>(userService.updateAge(user),OK);
+    }
 }

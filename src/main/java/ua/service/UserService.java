@@ -23,4 +23,10 @@ public interface UserService {
 
     User update(User user);
 
+    User updateName(User user);
+
+    User updateLastName(User user);
+
+    User updateAge(User user);
+
 }
