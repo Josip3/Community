@@ -25,7 +25,7 @@ export class UserDetailsService {
     this._user.next(this.user);
     this.isAuth = true;
     this._isAuth.next(this.isAuth);
-    this.isAdmin = user.role.toUpperCase() == "ADMIN";
+    this.isAdmin = user.role.toUpperCase() == "ROLE_ADMIN";
     this._isAdmin.next(this.isAdmin);
   }
 
@@ -67,9 +67,13 @@ export class UserDetailsService {
     console.log(localStorage.getItem("refresh_token"));
   }
 
-  updateTokenParseInLocalStorage() {
-
-
+  rmTokenParseInLocalStorage() {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("token_type");
+    localStorage.removeItem("expires_in");
+    localStorage.removeItem("scope");
+    localStorage.removeItem("jti");
+    localStorage.removeItem("refresh_token");
   }
 
 

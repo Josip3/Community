@@ -14,6 +14,7 @@ import ua.service.restService.UserRestService;
 
 import java.security.Principal;
 
+import static java.util.Optional.ofNullable;
 import static org.springframework.http.HttpStatus.OK;
 
 
@@ -39,9 +40,9 @@ public class UserRestController {
     @Autowired
     private UserService userService;
 
-// ResponseEntity<User> обгортка для респонсу (в даному випадку відправляє юзера і статус 200(ОК))
+    // ResponseEntity<User> обгортка для респонсу (в даному випадку відправляє юзера і статус 200(ОК))
 // Анотація, щоб на писати метод, тільки мапування
-    @PutMapping("/save")
+    @PostMapping("/save")
     public ResponseEntity<User> register(@RequestBody User user) {
         return new ResponseEntity<>(userRestService.register(user), OK);
     }
@@ -66,28 +67,33 @@ public class UserRestController {
     }
 
 
-    @PutMapping("/update")
+    @PostMapping("/update")
     private ResponseEntity<User> update(@RequestBody User user) {
         return new ResponseEntity<>(userService.update(user), OK);
     }
 
-    @PutMapping("/update/name")
-    private ResponseEntity<User> updateName(@RequestBody User user){
-        return new ResponseEntity<>(userService.updateName(user),OK);
+    @PostMapping("/update/name")
+    private ResponseEntity<User> updateName(@RequestBody User user) {
+        return new ResponseEntity<>(userService.updateName(user), OK);
     }
 
-    @PutMapping("/update/last-name")
-    private ResponseEntity<User> updateLastName(@RequestBody User user){
-        return new ResponseEntity<>(userService.updateLastName(user),OK);
+    @PostMapping("/update/last-name")
+    private ResponseEntity<User> updateLastName(@RequestBody User user) {
+        return new ResponseEntity<>(userService.updateLastName(user), OK);
     }
 
-    @PutMapping("/update/age")
-    private ResponseEntity<User> updateAge(@RequestBody User user){
-        return new ResponseEntity<>(userService.updateAge(user),OK);
+    @PostMapping("/update/age")
+    private ResponseEntity<User> updateAge(@RequestBody User user) {
+        return new ResponseEntity<>(userService.updateAge(user), OK);
     }
+
     @GetMapping("/get-user")
-    private ResponseEntity<User> getUser(Principal principal){
-        return new ResponseEntity<>(userService.findByName(principal.getName()), HttpStatus.OK);
+    private ResponseEntity<User> getUser(Principal principal) {
+        System.err.println("-------------------------------");
+        System.err.println(ofNullable(principal).isPresent());
+        System.err.println("-------------------------------");
+        System.err.println("principal " + ofNullable(principal.getName()).orElse("null"));
+        return new ResponseEntity<>(userService.findByEmail(principal.getName()), HttpStatus.OK);
     }
 
 }

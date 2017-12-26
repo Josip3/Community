@@ -1,12 +1,13 @@
 package ua.entity;
 
-import lombok.*;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ua.request.dto.Request;
 import ua.entity.enums.Role;
+import ua.request.dto.Request;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

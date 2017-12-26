@@ -9,6 +9,7 @@ import {isNull, isNullOrUndefined} from 'util';
 import 'rxjs/add/operator/catch';
 import {Url} from './config/url';
 import 'rxjs/add/observable/throw';
+import {AppComponent} from "../app/app.component";
 
 // дуже складна схема
 // тут ми обробляєм наш запит - додаєм хедери, урлу
@@ -47,6 +48,9 @@ export class AuthInterceptor implements HttpInterceptor {
         }
         this._router.navigateByUrl('/login');
       } else {
+        if (err.status == 401 && url.indexOf("/oauth/token") != -1) {
+          AppComponent._userDetailsService.rmTokenParseInLocalStorage();
+        }
         console.error(err);
         console.error(err.url);
         console.log(err instanceof HttpErrorResponse);
@@ -57,6 +61,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   getHeaders(req: HttpRequest<any>): HttpHeaders {
     let authKey = '';
+    console.log(authKey);
     let headers = new HttpHeaders();
     let temp: HttpRequest<any>;
     if (isNull(req.headers)) {
@@ -66,32 +71,43 @@ export class AuthInterceptor implements HttpInterceptor {
     }
     if (temp.headers.keys().indexOf('multipart') != -1 || temp.headers.keys().indexOf('enctype') != -1) {
       headers = headers.append('enctype', 'form-data/multipart');
+    } else if (temp.headers.keys().indexOf('no-auth') != -1) {
+      headers = headers.append('Content-Type', 'application/json');
     } else {
       if ((!isNullOrUndefined(localStorage.getItem('access_token'))) && (localStorage.getItem('access_token') != '')) {
+        console.log('access_token');
+        console.log(localStorage.getItem('access_token') == 'undefined');
+        headers = headers.append('Content-Type', 'application/json');
         authKey = 'Bearer ' + localStorage.getItem('access_token');
+        console.log((isNullOrUndefined(localStorage.getItem('access_token'))));
       } else {
+        console.log(req.url);
+        console.log(JSON.stringify(req.body));
         authKey = 'Basic  Y2xpZW50YXBwOjEyMzQ1Ng==';
-        if (req.url.indexOf('grant_type') != -1) {
+        console.log(authKey);
+        if (JSON.stringify(req.body).indexOf('grant_type') != -1) {
           if (temp.headers.keys().indexOf('Content-Type') != -1) {
-            if (temp.headers.get('Content-Type').indexOf('application/x-www-form-urlencoded') == -1) {
-              headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/x-www-form-urlencoded');
-            }
-            if (temp.headers.get('Content-Type').indexOf('application/json') == -1) {
-              headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/json');
-            }
+            // if (temp.headers.get('Content-Type').indexOf('application/x-www-form-urlencoded') == -1) {
+            //   headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/x-www-form-urlencoded');
+            // }
+            // if (temp.headers.get('Content-Type').indexOf('application/json') == -1) {
+            //   headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/json');
+            // }
+            headers = headers.set('Content-Type', 'application/x-www-form-urlencoded');
           } else {
             headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
           }
         }
       }
-      if (headers.keys().indexOf('Content-Type') != -1) {
-        if (headers.get('Content-Type').indexOf('application/json') == -1) {
-          headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/json');
-        }
-      } else {
-        headers = headers.append('Content-Type', 'application/json');
-      }
+      //   if (headers.keys().indexOf('Content-Type') != -1) {
+      //     if (headers.get('Content-Type').indexOf('application/json') == -1) {
+      //       headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/json');
+      //     }
+      //   } else {
+      //     headers = headers.append('Content-Type', 'application/json');
+      //   }
       headers = headers.append('Authorization', authKey);
+      console.log(authKey);
     }
     headers = headers.append('Accept', 'application/json');
     return headers;

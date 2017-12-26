@@ -30,7 +30,7 @@ export class RegistrationComponent implements OnInit {
         console.log('token' + isNullOrUndefined(next));
         console.log('token ' + JSON.stringify(next));
         AppComponent._userDetailsService.login(next);
-        if (next.role == 'ADMIN') {
+        if (next.role == 'ROLE_ADMIN') {
           localStorage.setItem('ADMIN', 'ADMIN');
           this._route.navigateByUrl('/admin');
         } else {

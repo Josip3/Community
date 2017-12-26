@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
@@ -14,14 +14,13 @@ export class UserService {
   }
 
 
-
-
   save(user: User): Observable<User> {
-    return this.httpClient.post<User>('/registration/save', JSON.stringify(user)).catch(err => Observable.throw(err));
+    user.age = 2;
+    return this.httpClient.post<User>('/registration/save', JSON.stringify(user), {headers: new HttpHeaders().set('no-auth', '')}).catch(err => Observable.throw(err));
   }
 
   getAll(): Observable<User[]> {
-    return this.httpClient.get<User[]>('/admin/get-all-user').catch(err => Observable.throw(err));
+    return this.httpClient.get<User[]>('/admin/get-all-users').catch(err => Observable.throw(err));
   }
 
   getOne(id: number): Observable<User> {
@@ -37,7 +36,7 @@ export class UserService {
   }
 
   updateName(user: User): Observable<User> {
-    return this.httpClient.post<User>('/registration/update/name', JSON.stringify(user)).catch(err => Observable.throw(err));
+    return this.httpClient.post<User>('/registration/update/name', JSON.stringify(user), {headers: new HttpHeaders().set('Content-Type', 'application/json')}).catch(err => Observable.throw(err));
   }
 
   updateLastName(user: User): Observable<User> {
@@ -45,6 +44,7 @@ export class UserService {
   }
 
   updateAge(user: User): Observable<User> {
+
     return this.httpClient.post<User>('/registration/update/age', JSON.stringify(user)).catch(err => Observable.throw(err));
   }
 }
