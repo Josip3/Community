@@ -21,10 +21,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept<T>(req: HttpRequest<T>, next: HttpHandler): Observable<HttpEvent<T>> {
     const headers = this.getHeaders(req);
+    let url = req.url;
     req = req.clone({headers, url: Url.url + req.url});
     return next.handle(req).catch(err => {
       console.log(err.status);
-      if (err.status === 401) {
+      if (err.status === 401 && url.indexOf("/oauth/token") == -1) {
         if (isNullOrUndefined(localStorage.getItem('refresh_token'))) {
           console.error('isNullOrUndefined(localStorage.getItem("refresh_token"))');
           return Observable.throw(err);

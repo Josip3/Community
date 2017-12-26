@@ -38,7 +38,9 @@ public class ApplicationWebMvcConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         String rootPath = System.getProperty("catalina.home");
         registry.addResourceHandler("/res/**")
-                .addResourceLocations("/WEB-INF/views/front/dist/");
+                .addResourceLocations("/WEB-INF/views/front/dist/")
+                .addResourceLocations("/assets/**")
+                .addResourceLocations("/");
     }
 
 //    @Bean

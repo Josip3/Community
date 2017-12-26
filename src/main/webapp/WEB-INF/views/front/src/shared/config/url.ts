@@ -1,3 +1,3 @@
 export class Url {
-  public static url = "";
+  public static url = "http://localhost:80";
 }

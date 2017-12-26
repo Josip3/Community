@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {Url} from "../../shared/config/url";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import "rxjs/add/observable/of";
+import "rxjs/add/observable/throw";
 import {User} from "../../shared/models/user";
 
 
@@ -16,15 +17,15 @@ export class LoginService {
   }
 
   sendCredentials(model): Observable<any> {
-    let tokenUrl = Url.url + "/oauth/token";
-    return this._http.post(tokenUrl, new HttpParams().set("username", model.username).set("password", model.password).set("grant_type", "password")).catch((error) => Observable.of(error));
+    let tokenUrl = "/oauth/token";
+    return this._http.post(tokenUrl, new HttpParams().set("username", model.username).set("password", model.password).set("grant_type", "password")).catch((error) => Observable.throw(error));
   }
 
   getUser(): Observable<User> {
     return this
       ._http
-      .get<User>(Url.url + "/user")
-      .catch((error) => Observable.of(error));
+      .get<User>("/user")
+      .catch((error) => Observable.throw(error));
   }
 
 }

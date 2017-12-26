@@ -9,7 +9,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 import ua.entity.User;
-import ua.request.delete;
 import ua.service.UserService;
 import ua.service.restService.UserRestService;
 
@@ -18,7 +17,6 @@ import java.security.Principal;
 import static org.springframework.http.HttpStatus.OK;
 
 
-@CrossOrigin
 @RestController
 @RequestMapping("/registration")
 public class UserRestController {
