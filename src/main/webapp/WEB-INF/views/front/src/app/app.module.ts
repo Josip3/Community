@@ -10,8 +10,8 @@ import { UserComponent } from './user/user.component';
 import {Routes} from "@angular/router";
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'test/:id', component: TestComponent},
+  // {path: 'login', component: LoginComponent},
+  // {path: 'test/:id', component: TestComponent},
 ];
 
 
