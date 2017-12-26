@@ -12,26 +12,29 @@
 
         <div class="reggg">
           <label>Введіть ваш e-mail:<br>
-            <input id="userEmail" name="email" class="email"  path="email"  required="required"   type="email"/>
+            <input id="userEmail" name="email" class="email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" path="email" required="required"
+                   type="email"/>
           </label>
           <br>
           <label>Введіть ваше імя:<br>
-            <input id="userName" class="name"  path="name"   required="required"    type="text" />
+            <input id="userName" class="name" path="name" [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}" required="required" type="text"/>
           </label>
           <br>
           <label>Введіть ваше прізвище:<br>
-            <input id="userLastName" class="lastName"  path="lastName"  required = "required"     type="text"/>
+            <input id="userLastName" class="lastName" path="lastName" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}" required="required"
+                   type="text"/>
           </label>
           <br>
           <label>Введіть пароль:<br>
-            <input class="pass"      id="pas1"  path="password" type="password" required = "required"/>
+            <input class="pass" id="pas1" path="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" type="password"
+                   required="required"/>
           </label>
           <br>
           <label>Повторіть пароль:<br>
-            <input class="pass2"     id="pas2"  type="password"       required = "required">
+            <input class="pass2" id="pas2" type="password" required="required">
           </label>
           <br>
-          <button class="zReg" id="regBtn" type="submit">Зареєструватись</button>
+          <button class="zReg" id="regBtn" type="submit" (click)="registration()">Зареєструватись</button>
 
 
         </div>
@@ -48,17 +51,17 @@
 
       <label class="e-mailLog">Ваш e-mail :<br>
 
-        <input id="mail" class="inEMAIL" path="email" name="email" type="email" required><br>
+        <input id="mail" class="inEMAIL" path="email" name="email" #idLoginEmail type="email" required><br>
 
       </label>
       <label class="passLog">Ваш пароль :<br>
 
-        <input id="pass" class="inPASS" path = "password" name="password" type=password required><br>
+        <input id="pass" class="inPASS" path="password" name="password" #idLoginPassword type=password required><br>
 
       </label>
       <br>
 
-      <button id="go" class="in" type="submit" >
+      <button id="go" class="in" type="submit" (click)="auth(idLoginEmail,idLoginPassword)">
         Вхід
       </button>
       <p class="oops"><a href="">Забули пароль?</a></p>
@@ -72,7 +75,6 @@
     </div>
     <a class="col-md-3 col-sm-3 col-lg-3 about">Community © 2017-2017</a>
   </div>
-
 
 
 </div>

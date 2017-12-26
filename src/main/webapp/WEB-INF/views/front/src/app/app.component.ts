@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {UserDetailsService} from "../shared/user-details-service.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+ static _userDetailsService: UserDetailsService = new UserDetailsService();
+
 }
