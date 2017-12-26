@@ -1,0 +1,8 @@
+#users{
+    max-height: 1000px;
+    overflow-x: scroll;
+}
+.userList{
+    border-top: 1px solid #181b1a;
+    margin-top : 10px;
+}
