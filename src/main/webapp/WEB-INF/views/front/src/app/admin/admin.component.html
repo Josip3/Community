@@ -1,3 +1,69 @@
-<p>
-  admin works!
-</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <!-- It can be fixed with bootstrap affix http://getbootstrap.com/javascript/#affix-->
+      <div id="sidebar" class="well sidebar-nav">
+        <h5><i class="glyphicon glyphicon-home"></i>
+          <small><b>ADMIN</b></small>
+        </h5>
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Add</a></li>
+          <li><a href="#">Search</a></li>
+        </ul>
+        <h5><i class="glyphicon glyphicon-user"></i>
+          <small><b>USER</b></small>
+        </h5>
+        <ul class="nav nav-pills nav-stacked">
+          <li><a class="glyphicon glyphicon-list" href="#"> User List</a></li>
+          <li><a class="glyphicon glyphicon-stats" href="#"> Statistic</a></li>
+        </ul>
+
+      </div>
+    </div>
+    <div class="col-md-8">
+
+      <div class="col-md-8" id="users">
+        <div id="sidebars" class="well sidebar-nav">
+          <h5><i class="glyphicon glyphicon-user"></i>
+            <small><b>User List</b></small>
+          </h5>
+          <!--<c:forEach items="${users}" var="user">-->
+
+            <h5 class="userList">
+              <!--<label>ID      : </label>    ${user.id}       <br>-->
+              <!--<label>Имя     : </label>    ${user.name}     <br>-->
+              <!--<label>Фамилия : </label>    ${user.lastName} <br>-->
+              <!--<label>Возраст : </label>    ${user.age}      <br>-->
+              <!--<label>Почта   : </label>    ${user.email}    <br>-->
+              <!--<label>Пароль  : </label>    ${user.password} <br>-->
+            </h5>
+
+            <form action="/user/delete/${user.id}" method="get">
+              <input type="submit" value="delete user">
+            </form>
+
+            <form action="/update/name/${user.id}" method="post">
+              <input type="submit" value="update name">
+              <input type="text"   placeholder="${user.name}">
+            </form>
+
+            <form action="update/surname/${user.id}" method="get">
+              <input type="submit" value="update lastn">
+              <input type="text" placeholder="${user.lastName}">
+            </form>
+
+            <form action="/update/age/${user.id}" method="get">
+              <input type="submit" value="update   age">
+              <input type="text" placeholder="${user.age}">
+            </form>
+
+            <br>
+          <!--</c:forEach>-->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
