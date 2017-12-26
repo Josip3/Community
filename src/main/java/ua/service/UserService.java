@@ -21,6 +21,6 @@ public interface UserService {
 
     void addMainPhoto(MultipartFile multipartFile, User user);
 
-
+    User update(User user);
 
 }

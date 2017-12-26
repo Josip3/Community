@@ -3,22 +3,16 @@ package ua.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 import ua.entity.User;
-import ua.request.LoginRequest;
 import ua.request.delete;
+import ua.service.UserService;
 import ua.service.restService.UserRestService;
+
+import static org.springframework.http.HttpStatus.OK;
 
 
 @CrossOrigin
@@ -41,11 +35,13 @@ public class UserRestController {
     @Autowired
     private UserRestService userRestService;
 
+    @Autowired
+    private UserService userService;
 
 
     @PutMapping("/save")
-    public User register(@RequestBody User user){
-        return userRestService.register(user);
+    public ResponseEntity<User> register(@RequestBody User user) {
+        return new ResponseEntity<>(userRestService.register(user), OK);
     }
 
 //    @RequestMapping(method = RequestMethod.POST,value = "/login")
@@ -63,13 +59,15 @@ public class UserRestController {
 
 
     @DeleteMapping("/delete")
-    public Boolean delete(@RequestBody delete request){
-        return userRestService.delete(request.getId());
+    public ResponseEntity<Boolean> delete(@RequestBody delete request) {
+        return new ResponseEntity<>(userRestService.delete(request.getId()), OK);
     }
 
 
-
-
+    @PutMapping("/update")
+    private ResponseEntity<User> update(@RequestBody User user) {
+        return new ResponseEntity<>(userService.update(user), OK);
+    }
 
 
 }
