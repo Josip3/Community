@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -25,41 +24,38 @@
     <div class="col-md-8">
 
       <div class="col-md-8" id="users">
-        <div id="sidebars" class="well sidebar-nav">
+        <div id="sidebars" class="well sidebar-nav" *ngFor="let user of users">
           <h5><i class="glyphicon glyphicon-user"></i>
             <small><b>User List</b></small>
           </h5>
           <!--<c:forEach items="${users}" var="user">-->
 
-            <h5 class="userList">
-              <!--<label>ID      : </label>    ${user.id}       <br>-->
-              <!--<label>Имя     : </label>    ${user.name}     <br>-->
-              <!--<label>Фамилия : </label>    ${user.lastName} <br>-->
-              <!--<label>Возраст : </label>    ${user.age}      <br>-->
-              <!--<label>Почта   : </label>    ${user.email}    <br>-->
-              <!--<label>Пароль  : </label>    ${user.password} <br>-->
-            </h5>
+          <h5 class="userList">
+            <label>ID : </label> {{wrapperHTML(user.id)}} <br>
+            <label>Имя : </label> {{wrapperHTML(user.name)}} <br>
+            <label>Фамилия : </label> {{wrapperHTML(user.lastName)}} <br>
+            <label>Возраст : </label> {{wrapperHTML(user.age)}} <br>
+            <label>Почта : </label> {{wrapperHTML(user.email)}} <br>
+            <label>Пароль : </label> {{wrapperHTML(user.password)}} <br>
+          </h5>
 
-            <form action="/user/delete/${user.id}" method="get">
-              <input type="submit" value="delete user">
-            </form>
+          <input type="submit" value="delete user" (click)="delete(user)">
 
-            <form action="/update/name/${user.id}" method="post">
-              <input type="submit" value="update name">
-              <input type="text"   placeholder="${user.name}">
-            </form>
+          <div>
+            <input type="submit" value="update name" (click)="updateName(user)">
+            <input type="text" placeholder="{{user.name}}" [(ngModel)]="user.name">
+          </div>
+          <div>
 
-            <form action="update/surname/${user.id}" method="get">
-              <input type="submit" value="update lastn">
-              <input type="text" placeholder="${user.lastName}">
-            </form>
+            <input type="submit" value="update lastn" (click)="updateLastName(user)">
+            <input type="text" placeholder="{{user.lastName}}" [(ngModel)]="user.lastName">
+          </div>
+          <div>
 
-            <form action="/update/age/${user.id}" method="get">
-              <input type="submit" value="update   age">
-              <input type="text" placeholder="${user.age}">
-            </form>
-
-            <br>
+            <input type="submit" value="update   age" (click)="updateAge(user)">
+            <input type="text" placeholder="{{user.age}}" [(ngModel)]="user.age">
+          </div>
+          <br>
           <!--</c:forEach>-->
         </div>
       </div>
