@@ -49,7 +49,7 @@
                                 My page </a>
                         </li>
                         <li>
-                            <a href="#" onclick="generateSome()">
+                            <a href="#" onclick="generatePhotoSelect()">
                                 <i class="glyphicon glyphicon-envelope"></i>
                                 Message
                             </a>
@@ -58,12 +58,6 @@
                             <a href="#">
                                 <i class="glyphicon glyphicon-user"></i>
                                 Friend </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-facetime-video"></i>
-                                Video
-                            </a>
                         </li>
                         <li>
                             <a href="#">
@@ -100,9 +94,32 @@
         </div>
         <div class="col-md-9">
             <div class="profile-content" id="userContent">
-                Тут контент юзера має <бути></бути>
-                <button onclick="generateSome()"></button>
+                <input type="file" id="file">
+                <button onclick="readPhoto(document.getElementById('file'))">Добавити нове фото</button>
             </div>
+            <script>
+                function readPhoto(object) {
+                    var file   = object.files[0];
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file)
+                    reader.onload = function () {
+                        console.log(reader.result)
+                        var base64picture = reader.result;
+
+                        $.ajax({
+                            url:'http://localhost:80/registration/login',
+                            type:"PUT",
+                            contentType:'application/json',
+                            dataType:'json',
+                            data:JSON.stringify(loginReq),
+                            success:function(data){
+                                console.log(data);
+
+                            }
+                        });
+                    }
+                }
+            </script>
 
         </div>
     </div>

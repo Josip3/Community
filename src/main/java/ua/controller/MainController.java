@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import ua.repository.UserRepository;
 import ua.request.dto.Request;
-import ua.security.TokenUtils;
 import ua.service.UserService;
 
 import java.security.Principal;
@@ -32,7 +31,7 @@ public class MainController {
         return "userPage";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/community",method = RequestMethod.GET)
     public String getUserPage(){
         return "content";

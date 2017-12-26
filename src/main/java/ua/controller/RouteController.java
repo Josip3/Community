@@ -18,7 +18,7 @@ import javax.validation.Valid;
 
 @CrossOrigin
 @Controller
-public class UserController {
+public class RouteController {
 
 
     @Autowired

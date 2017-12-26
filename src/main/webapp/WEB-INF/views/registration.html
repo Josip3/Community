@@ -1,8 +1,7 @@
 
 <!DOCTYPE html>
-<html>
-
-<head>
+<head xmlns:form="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml"
+      xmlns:form="http://www.w3.org/1999/xhtml">
     <meta charset="UTF-8">
 
     <title>Community</title>
@@ -137,23 +136,34 @@
                     var pass = $('#pass').val();
 
                     var loginReq = {
-                        'email':login,
-                        'password':pass
+                        'username':login,
+                        'password':pass,
+//                        'grant_type':'password'
                     };
 
 
                     $.ajax({
-                        url:'http://localhost:80/registration/login',
+                        url:'http://localhost:80/oauth/token?grant_type=password&username='+login+'&password='+pass,
                         type:"POST",
-                        contentType:'application/json',
+                        beforeSend: function(request){
+                            request.setRequestHeader('Authorization','Basic Y2xpZW50YXBwOjEyMzQ1Ng==');
+                        },
+                        contentType:'application/x-www-form-urlencoded',
                         dataType:'json',
-                        data:JSON.stringify(loginReq),
+//                        data:JSON.stringify(loginReq),
+                        headers:{'Authorization' : 'Basic Y2xpZW50YXBwOjEyMzQ1Ng=='},
                         success:function(data){
                             console.log(data);
+
                         }
+
+
+
 
                     });
                 });
+
+
 
             </script>
 

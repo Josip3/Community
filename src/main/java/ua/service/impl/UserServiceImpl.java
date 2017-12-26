@@ -23,7 +23,7 @@ import static java.util.Optional.ofNullable;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private PasswordEncoder encoder;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private UserRepository userRepository;
@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
         user.setName(user.getName().toUpperCase());
         user.setEnabled(true);
         user.setRole(Role.ROLE_ADMIN);
-        user.setPassword(encoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         for (User email:
                 ofNullable(findAlls()).orElse(new ArrayList<>())) {
             if(!user.getEmail().equals(email.getEmail()))
