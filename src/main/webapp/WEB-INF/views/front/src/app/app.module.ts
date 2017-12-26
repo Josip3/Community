@@ -10,7 +10,7 @@ import {UserComponent} from './user/user.component';
 import {RouterModule, Routes} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {AuthInterceptor} from "../shared/auth-inteceptor";
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 
 const routes: Routes = [
   {path: '', redirectTo: 'sing-in', pathMatch: 'full'},
@@ -32,6 +32,7 @@ const routes: Routes = [
   ],
   imports: [
     FormsModule,
+    HttpClientModule,
     BrowserModule,
     RouterModule.forRoot(routes, {useHash: true}),
   ],
