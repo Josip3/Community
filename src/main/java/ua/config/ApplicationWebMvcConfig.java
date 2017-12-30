@@ -40,7 +40,9 @@ public class ApplicationWebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/res/**")
                 .addResourceLocations("/WEB-INF/views/front/dist/")
                 .addResourceLocations("/assets/**")
-                .addResourceLocations("/");
+                .addResourceLocations("/")
+               .addResourceLocations("/resources/**")
+                .addResourceLocations("/resources/");
     }
 
 //    @Bean

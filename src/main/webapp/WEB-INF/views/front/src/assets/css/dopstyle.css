@@ -18,9 +18,9 @@ a:focus {
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     background-image: url(../image/logo2.png);
-    background-position: left;
-    background-repeat: no-repeat;
-    background-color: white;
+    /*background-position: left;*/
+    /*background-repeat: no-repeat;*/
+    /*background-color: white;*/
     /*   background: linear-gradient(to left,#C4E0E5 20%,#4CA1AF 80%) */
 }
 
@@ -90,9 +90,7 @@ a:focus {
 
 body {
     background: linear-gradient(to bottom, #4CA1AF 20%, #C4E0E5 80%);
-    background-repeat: no-repeat;
     height: 1010px;
-    /*    background: #428bca;*/
 }
 
 .hello>h5 {

@@ -15,7 +15,7 @@ export class UserService {
 
 
   save(user: User): Observable<User> {
-    user.age = 2;
+    user.age = 18;
     return this.httpClient.post<User>('/registration/save', JSON.stringify(user), {headers: new HttpHeaders().set('no-auth', '')}).catch(err => Observable.throw(err));
   }
 
@@ -46,5 +46,9 @@ export class UserService {
   updateAge(user: User): Observable<User> {
 
     return this.httpClient.post<User>('/registration/update/age', JSON.stringify(user)).catch(err => Observable.throw(err));
+  }
+
+  saveImage(data: FormData, id: number): Observable<User> {
+    return this.httpClient.post('/registration/save-image/' + id, data,{headers:new HttpHeaders().set('multipart','enctype')}).catch(err => Observable.throw(err));
   }
 }

@@ -13,6 +13,7 @@ import {AuthInterceptor} from "../shared/auth-inteceptor";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CanActiveAdmin} from "../shared/can-active/can-active-admin";
 import {CanActiveLogin} from "../shared/can-active/can-active-login";
+import { FriendListComponent } from './content/friend-list/friend-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'sing-in', pathMatch: 'full'},
@@ -20,7 +21,9 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent, canActivate: [CanActiveAdmin]},
   {path: 'sing-in', component: RegistrationComponent, canActivate: [CanActiveLogin]},
   {path: 'sign-up', component: RegistrationComponent, canActivate: [CanActiveLogin]},
-  {path: 'community', component: ContentComponent},
+  {path: 'community', component: ContentComponent, children:[
+    {path: 'friends', component: FriendListComponent},
+  ]},
   {path: 'user/:id', component: UserComponent},
 ];
 
@@ -31,7 +34,8 @@ const routes: Routes = [
     AdminComponent,
     ContentComponent,
     RegistrationComponent,
-    UserComponent
+    UserComponent,
+    FriendListComponent
   ],
   imports: [
     FormsModule,

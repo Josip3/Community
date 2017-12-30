@@ -15,6 +15,8 @@ public interface UserService {
 
     void save(User user);
 
+    User saveImage(MultipartFile multipartFile, Integer id);
+
     List<User> findAlls();
 
     User findByEmail(String email);

@@ -74,6 +74,10 @@ export class UserDetailsService {
     localStorage.removeItem("scope");
     localStorage.removeItem("jti");
     localStorage.removeItem("refresh_token");
+    this.user = null;
+    this.isAuth = false;
+    this.isAdmin = false;
+    console.log('token clear');
   }
 
 

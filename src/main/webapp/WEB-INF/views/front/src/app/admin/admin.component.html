@@ -9,7 +9,6 @@
         <ul class="nav nav-pills nav-stacked">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Add</a></li>
-          <li><a href="#">Search</a></li>
         </ul>
         <h5><i class="glyphicon glyphicon-user"></i>
           <small><b>USER</b></small>
@@ -39,7 +38,7 @@
             <label>Пароль : </label> {{ wrapperHTML(user.password) }} <br>
           </h5>
 
-          <input type="submit" value="delete user" (click)="delete(user)">
+          <input type="submit" value="delete user" (click)="delete(user.id)">
 
           <div>
             <input type="submit" value="update name" (click)="updateName(user)">

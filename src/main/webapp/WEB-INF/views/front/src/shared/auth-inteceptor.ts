@@ -12,6 +12,7 @@ import 'rxjs/add/observable/throw';
 import {AppComponent} from "../app/app.component";
 
 // дуже складна схема
+// всратись просто можна
 // тут ми обробляєм наш запит - додаєм хедери, урлу
 // якщо прийде 401 - надсилаєм запит з рефреш токеном, ґкщо знову то кидаєм на логін
 
@@ -87,25 +88,12 @@ export class AuthInterceptor implements HttpInterceptor {
         console.log(authKey);
         if (JSON.stringify(req.body).indexOf('grant_type') != -1) {
           if (temp.headers.keys().indexOf('Content-Type') != -1) {
-            // if (temp.headers.get('Content-Type').indexOf('application/x-www-form-urlencoded') == -1) {
-            //   headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/x-www-form-urlencoded');
-            // }
-            // if (temp.headers.get('Content-Type').indexOf('application/json') == -1) {
-            //   headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/json');
-            // }
             headers = headers.set('Content-Type', 'application/x-www-form-urlencoded');
           } else {
             headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
           }
         }
       }
-      //   if (headers.keys().indexOf('Content-Type') != -1) {
-      //     if (headers.get('Content-Type').indexOf('application/json') == -1) {
-      //       headers = headers.set('Content-Type', temp.headers.get('Content-Type') + ';application/json');
-      //     }
-      //   } else {
-      //     headers = headers.append('Content-Type', 'application/json');
-      //   }
       headers = headers.append('Authorization', authKey);
       console.log(authKey);
     }

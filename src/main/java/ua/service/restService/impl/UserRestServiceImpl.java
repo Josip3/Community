@@ -24,7 +24,7 @@ public class UserRestServiceImpl implements UserRestService {
     @Override
     public User register(User user) {
         user.setEnabled(true);
-        user.setRole(Role.ROLE_ADMIN);
+        user.setRole(Role.ROLE_USER);
         user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }

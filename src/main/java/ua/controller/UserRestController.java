@@ -8,9 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ua.entity.User;
 import ua.service.UserService;
 import ua.service.restService.UserRestService;
+import ua.service.utils.FileBuilder;
 
 import java.security.Principal;
 
@@ -41,25 +43,11 @@ public class UserRestController {
     private UserService userService;
 
     // ResponseEntity<User> обгортка для респонсу (в даному випадку відправляє юзера і статус 200(ОК))
-// Анотація, щоб на писати метод, тільки мапування
+    // Анотація, щоб на писати метод, тільки мапування
     @PostMapping("/save")
     public ResponseEntity<User> register(@RequestBody User user) {
         return new ResponseEntity<>(userRestService.register(user), OK);
     }
-
-//    @RequestMapping(method = RequestMethod.POST,value = "/login")
-//    public ResponseEntity<?> authOnRequest(@RequestBody LoginRequest loginRequest){
-//       //о це вроді не робить
-//         Authentication authentication =
-//                this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),loginRequest.getPassword()));
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-//        UserDetails userDetails = this.userDetailsService.loadUserByUsername(loginRequest.getEmail());
-//        String token = this.tokenUtils.generateToken(userDetails);
-//        System.err.println("USER REST CONTROLLER : : 'authOnRequest' " + token + " token");
-//        System.err.println("USER REST CONTROLLER : : 'authOnRequest' " + loginRequest.getEmail()+loginRequest.getPassword());
-//        return  ResponseEntity.ok(token);
-//    }
-
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable Integer id) {
@@ -94,6 +82,11 @@ public class UserRestController {
         System.err.println("-------------------------------");
         System.err.println("principal " + ofNullable(principal.getName()).orElse("null"));
         return new ResponseEntity<>(userService.findByEmail(principal.getName()), HttpStatus.OK);
+    }
+
+    @PostMapping("/save-image/{id}")
+    private ResponseEntity<User> saveImage(@RequestParam MultipartFile multipartFile, @PathVariable Integer id) {
+        return new ResponseEntity<>(userService.saveImage(multipartFile, id), OK);
     }
 
 }

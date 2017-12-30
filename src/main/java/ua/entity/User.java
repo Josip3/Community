@@ -50,6 +50,7 @@ public class User implements UserDetails {
     @JsonIgnore
     @ManyToOne
     private Country userCountry;
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "GROUP_FROM_USER", joinColumns = @JoinColumn(name = "ID_USER"), inverseJoinColumns = @JoinColumn(name = "ID_GROUP"))

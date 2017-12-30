@@ -8,6 +8,7 @@ import ua.entity.User;
 import ua.entity.enums.Role;
 import ua.repository.UserRepository;
 import ua.service.UserService;
+import ua.service.utils.FileBuilder;
 
 import java.util.List;
 
@@ -20,17 +21,28 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private FileBuilder fileBuilder;
+
 
     public void save(User user) {
         user.setName(user.getName().toUpperCase());
         user.setEnabled(true);
-        user.setRole(Role.ROLE_ADMIN);
+        user.setRole(Role.ROLE_USER);
+        user.setMainPhoto("/assets/image/cat.jpg");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         if (userRepository.findByEmail(user.getEmail()) != null)
             throw new NullPointerException("Вже э такий");
         else
             userRepository.save(user);
 
+    }
+
+    @Override
+    public User saveImage(MultipartFile multipartFile, Integer id) {
+        User user = findOne(id);
+        user.setMainPhoto(fileBuilder.saveFile(multipartFile));
+        return userRepository.save(user);
     }
 
     @Override

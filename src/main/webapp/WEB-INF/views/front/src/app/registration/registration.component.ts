@@ -51,6 +51,7 @@ export class RegistrationComponent implements OnInit {
       console.error(error);
     });
     console.log(JSON.stringify(this.user));
+
   }
 
 }
