@@ -24,14 +24,8 @@ public class RouteController {
 
     @GetMapping("/")
     public String home() {
-//        return "redirect:/registration";
         return "front/dist/index";
     }
-
-//    @GetMapping("/registration")
-//    public String getRegistrationPage() {
-//        return "registration";
-//    }
 
 
 }

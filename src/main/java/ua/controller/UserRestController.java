@@ -30,9 +30,6 @@ public class UserRestController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-//    @Autowired
-//    private TokenUtils tokenUtils;
-
     @Autowired
     private UserDetailsService userDetailsService;
 

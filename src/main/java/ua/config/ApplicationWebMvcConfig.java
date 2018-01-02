@@ -45,14 +45,6 @@ public class ApplicationWebMvcConfig extends WebMvcConfigurerAdapter {
                 .addResourceLocations("/resources/");
     }
 
-//    @Bean
-//    MultipartConfigElement multipartConfigElement() {
-//        MultipartConfigFactory factory = new MultipartConfigFactory();
-//        factory.setMaxFileSize("512000MB");
-//        factory.setMaxRequestSize("512000MB");
-//        return factory.createMultipartConfig();
-//    }
-
 
     @Bean
     public TomcatEmbeddedServletContainerFactory tomcatEmbedded() {
@@ -77,18 +69,6 @@ public class ApplicationWebMvcConfig extends WebMvcConfigurerAdapter {
         return new TemplateEngine();
     }
 
-
-//    @Override
-//    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-//        String rootPath = System.getProperty("catalina.base");
-//        registry.addResourceHandler("/resources/**").addResourceLocations("file:/"+rootPath+"/resources/");
-//
-//    }
-
-//    @Bean
-//    public CommonsMultipartResolver multipartResolver() {
-//        return new CommonsMultipartResolver();
-//    }
 
 
 }
