@@ -76,11 +76,18 @@
     </div>
     <div class="col-md-9">
       <div class="profile-content" id="userContent">
-        <form #imgForm>
-          <input type="file" id="file">
-        </form>
-        <button (click)="saveImage(imgForm)">Добавити нове фото</button>
-        <router-outlet></router-outlet>
+        <audio id="audio" preload="auto" tabindex="0" controls="" >
+          <source src="/assets/audio/Saba40.mp3">
+
+        </audio>
+
+        <input type="file">
+        <input type="text">
+        <input type="text">
+
+        <router-outlet>
+
+        </router-outlet>
       </div>
 
     </div>

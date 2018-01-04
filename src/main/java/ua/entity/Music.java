@@ -22,9 +22,13 @@ public class Music {
 
     @Getter@Setter private String trackName;
 
+    @Getter@Setter
+    @Column(name = "music_file", columnDefinition = "LONGTEXT")
+    private String musicFile;
+
     @ManyToMany
     @JoinTable(name = "MUSIC_FROM_USER",joinColumns = @JoinColumn(name = "ID_MUSIC"),inverseJoinColumns = @JoinColumn(name = "ID_USER"))
-    @Getter@Setter private List<User> userMusicList = new ArrayList<User>();
+    @Getter@Setter private List<User> userMusicList;
 
     @ManyToOne
     @Getter@Setter private GanreMusic ganreMusic;

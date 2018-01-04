@@ -26,6 +26,7 @@ public class UserRestServiceImpl implements UserRestService {
         user.setEnabled(true);
         user.setRole(Role.ROLE_USER);
         user.setPassword(encoder.encode(user.getPassword()));
+        user.setMainPhoto("/assets/image/cat.jpg");
         return userRepository.save(user);
     }
 

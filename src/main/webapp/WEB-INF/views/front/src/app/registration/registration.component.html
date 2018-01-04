@@ -10,29 +10,35 @@
         <a>Community - це універсальний засіб для комунікації і пошуку людей,які оточують вас.</a>
         <h3>Реєстрація</h3>
 
-        <div class="reggg">
-          <label>Введіть ваш e-mail:<br>
-            <input id="userEmail" name="email" class="email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" path="email" required="required"
-                   type="email"/>
-          </label>
-          <br>
-          <label>Введіть ваше імя:<br>
-            <input id="userName" class="name" path="name" [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}" required="required" type="text"/>
-          </label>
-          <br>
-          <label>Введіть ваше прізвище:<br>
-            <input id="userLastName" class="lastName" path="lastName" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}" required="required"
-                   type="text"/>
-          </label>
-          <br>
-          <label>Введіть пароль:<br>
-            <input class="pass" id="pas1" path="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" type="password"
-                   required="required"/>
-          </label>
-          <br>
-          <label>Повторіть пароль:<br>
-            <input class="pass2" id="pas2" type="password" required="required">
-          </label>
+        <div class="reggg" >
+          <form [formGroup]="formGroup">
+            <label>Введіть ваш e-mail:<br>
+              <input id="userEmail" name="email" class="email" [(ngModel)]="user.email"
+                     [ngModelOptions]="{standalone: true}" path="email" required="required"
+                     type="email"/>
+            </label>
+            <br>
+            <label>Введіть ваше імя:<br>
+              <input id="userName" class="name" path="name" [(ngModel)]="user.name"
+                     [ngModelOptions]="{standalone: true}" required="required" type="text"/>
+            </label>
+            <br>
+            <label>Введіть ваше прізвище:<br>
+              <input id="userLastName" class="lastName" path="lastName" [(ngModel)]="user.lastName"
+                     [ngModelOptions]="{standalone: true}" required="required"
+                     type="text"/>
+            </label>
+            <br>
+            <label>Введіть пароль:<br>
+              <input class="pass" id="pas1" path="password" [(ngModel)]="user.password"
+                     [ngModelOptions]="{standalone: true}" type="password"
+                     required="required"/>
+            </label>
+            <br>
+            <label>Повторіть пароль:<br>
+              <input class="pass2" id="pas2" type="password" formControlName="rePass">
+            </label>
+          </form>
           <br>
           <button class="zReg" id="regBtn" type="submit" (click)="registration()">Зареєструватись</button>
 
