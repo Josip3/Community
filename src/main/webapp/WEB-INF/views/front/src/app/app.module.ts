@@ -8,7 +8,7 @@ import {ContentComponent} from './content/content.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {UserComponent} from './user/user.component';
 import {RouterModule, Routes} from "@angular/router";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "../shared/auth-inteceptor";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CanActiveAdmin} from "../shared/can-active/can-active-admin";
@@ -41,6 +41,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     BrowserModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes, {useHash: true}),
   ],
   providers: [
