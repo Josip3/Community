@@ -5,6 +5,7 @@ import {LoginService} from './login.service';
 import {Router} from '@angular/router';
 import {User} from '../../shared/models/user';
 import {UserService} from '../../shared/user.service';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-registration',
@@ -15,6 +16,11 @@ import {UserService} from '../../shared/user.service';
 export class RegistrationComponent implements OnInit {
 
   user: User = new User();
+  formGroup = new FormGroup({
+    rePass: new FormControl('', Validators.required),
+    mail: new FormControl('', Validators.email)
+  });
+  validMail = true;
 
   constructor(private _loginService: LoginService, private _userService: UserService, private _route: Router) {
   }
@@ -45,13 +51,28 @@ export class RegistrationComponent implements OnInit {
   }
 
   registration() {
+    if (!this.validateMail())
+      return;
     this._userService.save(this.user).subscribe(next => {
-      this.user = next;
+      AppComponent._userDetailsService.user = next;
+      this.user = new User();
+      this.formGroup.reset();
     }, error => {
       console.error(error);
     });
     console.log(JSON.stringify(this.user));
 
+  }
+
+  validateMail(): boolean {
+    if (!isNullOrUndefined(this.user.email)) {
+      if (this.user.email.includes('@') && !this.user.email.includes(' ') && this.user.email.split('@').length == 2) {
+        this.validMail = this.user.email.split('@')[1].includes('.');
+        return this.user.email.split('@')[1].includes('.');
+      }
+    }
+    this.validMail = false;
+    return false;
   }
 
 }

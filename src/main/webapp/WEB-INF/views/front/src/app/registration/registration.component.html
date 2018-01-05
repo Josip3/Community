@@ -15,8 +15,12 @@
             <label>Введіть ваш e-mail:<br>
               <input id="userEmail" name="email" class="email" [(ngModel)]="user.email"
                      [ngModelOptions]="{standalone: true}" path="email" required="required"
-                     type="email"/>
+                     type="email" (input)="validateMail()"/>
             </label>
+            <span
+              *ngIf="!validMail">wrong mail
+            </span>
+
             <br>
             <label>Введіть ваше імя:<br>
               <input id="userName" class="name" path="name" [(ngModel)]="user.name"

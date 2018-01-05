@@ -14,6 +14,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CanActiveAdmin} from "../shared/can-active/can-active-admin";
 import {CanActiveLogin} from "../shared/can-active/can-active-login";
 import { FriendListComponent } from './content/friend-list/friend-list.component';
+import { MusicComponent } from './content/music/music.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'sing-in', pathMatch: 'full'},
@@ -35,7 +36,8 @@ const routes: Routes = [
     ContentComponent,
     RegistrationComponent,
     UserComponent,
-    FriendListComponent
+    FriendListComponent,
+    MusicComponent
   ],
   imports: [
     FormsModule,
