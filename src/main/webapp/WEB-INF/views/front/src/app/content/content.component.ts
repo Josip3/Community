@@ -20,6 +20,7 @@ export class ContentComponent implements OnInit {
     this.user = AppComponent._userDetailsService.user;
   }
 
+
   ngOnInit() {
   }
 
@@ -30,10 +31,6 @@ export class ContentComponent implements OnInit {
   logout() {
     AppComponent._userDetailsService.rmTokenParseInLocalStorage();
     this._router.navigateByUrl('login');
-  }
-
-  musicList(){
-
   }
 
   // saveMusic(musicFile: any){
