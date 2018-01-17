@@ -24,6 +24,7 @@ const routes: Routes = [
   {path: 'sign-up', component: RegistrationComponent, canActivate: [CanActiveLogin]},
   {path: 'community', component: ContentComponent, children:[
     {path: 'friends', component: FriendListComponent},
+    {path: 'audio', component: MusicComponent},
   ]},
   {path: 'user/:id', component: UserComponent},
 ];
@@ -37,7 +38,7 @@ const routes: Routes = [
     RegistrationComponent,
     UserComponent,
     FriendListComponent,
-    MusicComponent
+    MusicComponent,
   ],
   imports: [
     FormsModule,

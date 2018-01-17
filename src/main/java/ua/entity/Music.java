@@ -23,7 +23,7 @@ public class Music {
     @Getter@Setter private String trackName;
 
     @Getter@Setter
-    @Column(name = "music_file", columnDefinition = "LONGTEXT")
+    @Column(name = "music_file")
     private String musicFile;
 
     @ManyToMany

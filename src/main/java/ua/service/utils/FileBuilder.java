@@ -8,14 +8,14 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class FileBuilder {
+
     private static final Logger logger = Logger.getLogger(FileBuilder.class);
 
 
     //    @Value("${base.path.file}")
     private String basePathFile = "/resources/img";
 
-    //    @Value("${base.path.file.name}")
-    private String nameFilePath = "/resources/img";
+    private String musicPath = "/resources/music";
 
     /**
      * @param multipartFile
@@ -23,13 +23,20 @@ public class FileBuilder {
      */
 
     public String saveFile(MultipartFile multipartFile) {
-
         String path = "";
+        String tag = "";
         try {
+            tag=getFileTeg(multipartFile.getOriginalFilename());
+            path=System.getProperty("catalina.home");
             String uuid = UUID.randomUUID().toString();
-            path = nameFilePath + "/" + uuid + "." + getFileTeg(multipartFile.getOriginalFilename());
-            File file = new File(System.getProperty("catalina.home") + "" + basePathFile + "/" + uuid + "." + getFileTeg(multipartFile.getOriginalFilename()));
-            path = System.getProperty("catalina.home") + "" + basePathFile + "/" + uuid + "." + getFileTeg(multipartFile.getOriginalFilename());
+
+            if (tag.equals("mp3")){
+                path += musicPath + "/" + uuid + "." + tag;
+            }else if (tag.equals("png")){
+                path += basePathFile + "/" + uuid + "." + tag;
+            }
+
+            File file = new File(path);
             file.getParentFile().mkdirs();//!correct
             if (!file.exists()) {
                 multipartFile.transferTo(file);

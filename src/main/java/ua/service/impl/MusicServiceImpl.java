@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ua.entity.Music;
 import ua.repository.MusicRepository;
 import ua.service.MusicService;
+import ua.service.utils.FileBuilder;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,15 +19,20 @@ public class MusicServiceImpl implements MusicService {
     @Autowired
     private MusicRepository musicRepository;
 
+    @Autowired
+    private FileBuilder fileBuilder;
+
     @Override
-    public void save(Music music) {
-        musicRepository.save(music);
+    public Music save(Music music) {
+        return musicRepository.save(music);
     }
 
     @Override
-    public void save(MultipartFile file, Music music) {
-        music.setMusicFile(encodeToBase64(file));
-        save(music);
+    public Music save(MultipartFile file, Integer id) {
+        Music music = musicRepository.findOne(id);
+        music.setMusicFile(fileBuilder.saveFile(file));
+        return musicRepository.save(music);
+
     }
 
     @Override
@@ -34,27 +40,28 @@ public class MusicServiceImpl implements MusicService {
         return musicRepository.findAll();
     }
 
+
     @Override
-    public Music findOne(int id) {
+    public Music findOne(Integer id) {
         return musicRepository.findOne(id);
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Integer id) {
         musicRepository.delete(id);
     }
 
     @Override
     public String encodeToBase64(MultipartFile file) {
-            String encodedFile = null;
-            byte[] bytes = new byte[(int) file.getSize()];
-            try {
-                bytes = file.getBytes();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            encodedFile = Base64.encodeBase64String(bytes);
-            return encodedFile;
+        String encodedFile = null;
+        byte[] bytes = new byte[(int) file.getSize()];
+        try {
+            bytes = file.getBytes();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        encodedFile = Base64.encodeBase64String(bytes);
+        return encodedFile;
 
     }
 }

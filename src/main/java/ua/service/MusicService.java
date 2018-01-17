@@ -7,15 +7,15 @@ import java.util.List;
 
 public interface MusicService {
 
-    void save(Music music);
+    Music save(Music music);
 
-    void save(MultipartFile file,Music music);
+    Music save(MultipartFile file,Integer id);
 
     List<Music> findAll();
 
-    Music findOne(int id);
+    Music findOne(Integer id);
 
-    void delete(int id);
+    void delete(Integer id);
 
     String encodeToBase64(MultipartFile file);
 }

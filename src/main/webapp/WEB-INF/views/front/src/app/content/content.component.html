@@ -26,7 +26,7 @@
         <div class="profile-usermenu">
           <ul class="nav">
             <li class="active">
-              <a href="#">
+              <a routerLink="/community">
                 <i class="glyphicon glyphicon-home"></i>
                 My page </a>
             </li>
@@ -42,7 +42,7 @@
                 All User </a>
             </li>
             <li>
-              <a href="#">
+              <a routerLink="audio">
                 <i class="glyphicon glyphicon-music"></i>
                 Audio </a>
             </li>
@@ -75,16 +75,8 @@
       </div>
     </div>
     <div class="col-md-9">
+
       <div class="profile-content" id="userContent">
-        <audio id="audio" preload="auto" tabindex="0" controls="" >
-          <source src="/assets/audio/Saba40.mp3">
-
-        </audio>
-
-        <input type="file">
-        <input type="text">
-        <input type="text">
-
         <router-outlet>
 
         </router-outlet>

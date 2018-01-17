@@ -17,12 +17,14 @@ public class MusicController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/save")
-    public ResponseEntity<Music> save(@RequestParam String perfomerName, @RequestParam String trackName, @RequestParam MultipartFile musicFile){
-        Music music = new Music();
-        music.setPerfomerName(perfomerName);
-        music.setTrackName(trackName);
-        musicService.save(musicFile,music);
-        return new ResponseEntity<>(music,HttpStatus.CREATED);
+    public ResponseEntity<Music> save(@RequestBody Music music){
+        return new ResponseEntity<>(musicService.save(music),HttpStatus.CREATED);
     }
+
+    @PostMapping("/save-file/{id}")
+    public ResponseEntity<Music> savefile(@PathVariable Integer id,@RequestParam MultipartFile file){
+        return new ResponseEntity<>(musicService.save(file, id),HttpStatus.CREATED);
+    }
+
 
 }

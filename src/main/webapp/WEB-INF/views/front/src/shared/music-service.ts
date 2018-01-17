@@ -15,8 +15,12 @@ export class MusicService {
   }
 
 
-  save(music: Music): Observable<Response> {
-    return this.httpClient.post('/music/save', music, {headers: new HttpHeaders().set('no-auth', '')}).catch(err => Observable.throw(err));
+  save(music: Music): Observable<Music> {
+    return this.httpClient.post('/music/save', music).catch(err => Observable.throw(err));
+  }
+
+  saveFile(music: HTMLFormElement,id: number): Observable<Music> {
+    return this.httpClient.post('/music/save-file/'+id, new FormData(music),{headers:new HttpHeaders({"no-auth":""})}).catch(err => Observable.throw(err));
   }
 
 
