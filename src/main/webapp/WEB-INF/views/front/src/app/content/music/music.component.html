@@ -1,12 +1,18 @@
 
-<audio id="audio" preload="auto" tabindex="0" controls="" ></audio>
+<audio id="audio" #idaudio preload="auto" tabindex="0" controls="" (ended)="next()" src="{{url+audioSrc.musicFile}}">
 
+</audio>
+
+<div *ngFor="let one of musics;let i=index" (click)="onClick(one)" [ngClass]="{'active':i==musics.indexOf(audioSrc)}">
+  {{one.perfomerName}}
+  {{one.trackName}}
+</div>
 
 <form #some>
   <input type="file" name="file">
 </form>
 
-<input type="text" placeholder="performer name" [(ngModel)]="audio.name" [ngModelOptions]="{standalone:true}">
-<input type="text" placeholder="track name" [(ngModel)]="audio.name" [ngModelOptions]="{standalone:true}">
+<input type="text" placeholder="performer name" [(ngModel)]="audio.perfomerName" [ngModelOptions]="{standalone:true}">
+<input type="text" placeholder="track name" [(ngModel)]="audio.trackName" [ngModelOptions]="{standalone:true}">
 
 <button (click)="addMusic(some)">add</button>

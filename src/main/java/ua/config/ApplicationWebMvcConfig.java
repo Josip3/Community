@@ -41,8 +41,7 @@ public class ApplicationWebMvcConfig extends WebMvcConfigurerAdapter {
                 .addResourceLocations("/WEB-INF/views/front/dist/")
                 .addResourceLocations("/assets/**")
                 .addResourceLocations("/")
-               .addResourceLocations("/resources/**")
-                .addResourceLocations("/resources/");
+                .addResourceLocations("file:/"+System.getProperty("catalina.home")+"/resources/");
     }
 
 

@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 import ua.entity.Music;
 import ua.service.MusicService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/music")
 public class MusicController {
@@ -24,6 +26,11 @@ public class MusicController {
     @PostMapping("/save-file/{id}")
     public ResponseEntity<Music> savefile(@PathVariable Integer id,@RequestParam MultipartFile file){
         return new ResponseEntity<>(musicService.save(file, id),HttpStatus.CREATED);
+    }
+
+    @GetMapping("/get-music")
+    public ResponseEntity<List<Music>> getMusic(){
+        return new ResponseEntity<>(musicService.findAll(),HttpStatus.OK);
     }
 
 

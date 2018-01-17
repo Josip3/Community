@@ -20,7 +20,11 @@ export class MusicService {
   }
 
   saveFile(music: HTMLFormElement,id: number): Observable<Music> {
-    return this.httpClient.post('/music/save-file/'+id, new FormData(music),{headers:new HttpHeaders({"no-auth":""})}).catch(err => Observable.throw(err));
+      return this.httpClient.post('/music/save-file/'+id, new FormData(music),{headers:new HttpHeaders({"multipart":""})}).catch(err => Observable.throw(err));
+  }
+
+  getAll(): Observable<Music[]>{
+    return this.httpClient.get<Music[]>('/music/get-music').catch(err => Observable.throw(err));
   }
 
 

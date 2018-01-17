@@ -13,9 +13,9 @@ public class FileBuilder {
 
 
     //    @Value("${base.path.file}")
-    private String basePathFile = "/resources/img";
+    private String basePathFile = "/res/img";
 
-    private String musicPath = "/resources/music";
+    private String musicPath = "/res/music";
 
     /**
      * @param multipartFile
@@ -31,7 +31,7 @@ public class FileBuilder {
             String uuid = UUID.randomUUID().toString();
 
             if (tag.equals("mp3")){
-                path += musicPath + "/" + uuid + "." + tag;
+                path += "/resources/music" + "/" + uuid + "." + tag;
             }else if (tag.equals("png")){
                 path += basePathFile + "/" + uuid + "." + tag;
             }
@@ -45,6 +45,7 @@ public class FileBuilder {
 
                 logger.info("----path[" + System.getProperty("catalina.home") + path + "]-------not create------------");
             }
+            path=musicPath + "/" + uuid + "." + tag;
             loggerInfo(multipartFile.getOriginalFilename(), "create file->");
         } catch (IOException e) {
             loggerError(e, "------------path{" + System.getProperty("catalina.home") + path + "}-------------------------error file-------------------------------------");
