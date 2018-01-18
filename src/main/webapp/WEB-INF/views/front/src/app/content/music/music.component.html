@@ -3,11 +3,15 @@
 
 </audio>
 
+<h2>Music list:</h2>
 <div *ngFor="let one of musics;let i=index" (click)="onClick(one)" [ngClass]="{'active':i==musics.indexOf(audioSrc)}">
   {{one.perfomerName}}
+  -
   {{one.trackName}}
+  <br>
+  ---------------------------------------
 </div>
-
+<br>
 <form #some>
   <input type="file" name="file">
 </form>
