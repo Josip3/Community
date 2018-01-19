@@ -9,12 +9,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import ua.entity.Music;
 import ua.entity.User;
 import ua.service.UserService;
 import ua.service.restService.UserRestService;
 import ua.service.utils.FileBuilder;
 
 import java.security.Principal;
+import java.util.List;
 
 import static java.util.Optional.ofNullable;
 import static org.springframework.http.HttpStatus.OK;
@@ -38,6 +40,16 @@ public class UserRestController {
 
     @Autowired
     private UserService userService;
+
+    @GetMapping("/my-music/{id}")
+    private ResponseEntity<List<Music>> mymusic(@PathVariable Integer id){
+        return new ResponseEntity<>(userService.findAllMusic(id),HttpStatus.OK);
+    }
+
+    @PostMapping("/add-music")
+    private ResponseEntity<User> addMusic(@RequestParam Integer idUser,@RequestParam Integer idMusic){
+        return new ResponseEntity<>(userService.addMusic(idMusic,idUser),HttpStatus.OK);
+    }
 
     // ResponseEntity<User> обгортка для респонсу (в даному випадку відправляє юзера і статус 200(ОК))
     // Анотація, щоб на писати метод, тільки мапування

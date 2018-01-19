@@ -15,6 +15,8 @@ import {CanActiveAdmin} from "../shared/can-active/can-active-admin";
 import {CanActiveLogin} from "../shared/can-active/can-active-login";
 import { FriendListComponent } from './content/friend-list/friend-list.component';
 import { MusicComponent } from './content/music/music.component';
+import { MyMusicComponent } from './content/my-music/my-music.component';
+import { PreviewComponent } from './content/preview/preview.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'sing-in', pathMatch: 'full'},
@@ -25,6 +27,7 @@ const routes: Routes = [
   {path: 'community', component: ContentComponent, children:[
     {path: 'friends', component: FriendListComponent},
     {path: 'audio', component: MusicComponent},
+    {path: 'my-music', component: MyMusicComponent},
   ]},
   {path: 'user/:id', component: UserComponent},
 ];
@@ -39,6 +42,8 @@ const routes: Routes = [
     UserComponent,
     FriendListComponent,
     MusicComponent,
+    MyMusicComponent,
+    PreviewComponent,
   ],
   imports: [
     FormsModule,

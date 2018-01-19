@@ -1,17 +1,17 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AppComponent} from "../../app.component";
 import {Music} from "../../../shared/models/music";
 import {MusicService} from "../../../shared/music-service";
 import {Url} from "../../../shared/config/url";
 import {UserService} from "../../../shared/user.service";
-import {AppComponent} from "../../app.component";
 
 @Component({
-  selector: 'app-music',
-  templateUrl: './music.component.html',
-  styleUrls: ['./music.component.css'],
+  selector: 'app-my-music',
+  templateUrl: './my-music.component.html',
+  styleUrls: ['./my-music.component.css'],
   providers: [MusicService, UserService]
 })
-export class MusicComponent implements OnInit {
+export class MyMusicComponent implements OnInit {
 
   audio: Music = new Music();
   audioSrc: Music = new Music();
@@ -26,19 +26,6 @@ export class MusicComponent implements OnInit {
   ngOnInit() {
   }
 
-  addMusic(form: HTMLFormElement) {
-    this.music.save(this.audio).subscribe(next => {
-      this.music.saveFile(form, next.id).subscribe(next => {
-        this.audio = new Music();
-        form.reset();
-        this.getAllMusic();
-      }, err => {
-        console.error(err);
-      });
-    }, err => {
-      console.error(err);
-    });
-  }
 
   start() {
     if (this.musics.length > 0)
@@ -68,16 +55,9 @@ export class MusicComponent implements OnInit {
     this.eraudio.nativeElement.autoplay = true;
   }
 
-  addMyMusic(id: number) {
-    this.userService.addMusic(id, AppComponent._userDetailsService.user.id).subscribe(next => {
-      console.log(next)
-    }, error2 => {
-      console.error(error2)
-    });
-  }
 
   getAllMusic() {
-    this.music.getAll().subscribe(next => {
+    this.userService.myMusic(AppComponent._userDetailsService.user.id).subscribe(next => {
       this.musics = next;
       this.start();
       console.log(JSON.stringify(next));

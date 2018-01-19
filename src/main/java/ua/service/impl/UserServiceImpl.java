@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import ua.entity.Music;
 import ua.entity.User;
 import ua.entity.enums.Role;
+import ua.repository.MusicRepository;
 import ua.repository.UserRepository;
 import ua.service.UserService;
 import ua.service.utils.FileBuilder;
@@ -20,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private MusicRepository musicRepository;
 
     @Autowired
     private FileBuilder fileBuilder;
@@ -85,6 +90,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByName(String name) {
         return userRepository.findByName(name);
+    }
+
+    @Override
+    public List<Music> findAllMusic(Integer id) {
+        return userRepository.findAllMusic(id);
+    }
+
+    @Override
+    public User addMusic(Integer idMusic, Integer idUser) {
+        User user = userRepository.findOne(idUser);
+        List<Music> music = user.getMusicList();
+        if(music.stream().noneMatch(music1 -> music1.getId()==idMusic))
+        music.add(musicRepository.findOne(idMusic));
+        return userRepository.save(user.setMusicList(music));
     }
 
     @Override

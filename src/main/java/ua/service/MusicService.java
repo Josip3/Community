@@ -18,4 +18,6 @@ public interface MusicService {
     void delete(Integer id);
 
     String encodeToBase64(MultipartFile file);
+
+
 }

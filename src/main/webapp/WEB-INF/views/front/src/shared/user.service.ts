@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import {User} from './models/user';
+import {Music} from "./models/music";
 
 // це сервіс, він необхідний для спілкування з сервером
 // тут ми дістаєм інфу, надсилаєм її
@@ -13,6 +14,15 @@ export class UserService {
   constructor(private httpClient: HttpClient) {
   }
 
+  addMusic(idMusic: number,idUser: number): Observable<User>{
+    return this.httpClient.post<User>('/registration/add-music',
+      null,
+      {params: new HttpParams().set("idMusic",idMusic +'').set("idUser",idUser+'')}).catch(err => Observable.throw(err));
+  }
+
+  myMusic(idUser: number): Observable<Music[]>{
+    return this.httpClient.get<Music[]>('/registration/my-music/' + idUser).catch(err => Observable.throw(err));
+  }
 
   save(user: User): Observable<User> {
     user.age = 18;

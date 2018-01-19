@@ -1,0 +1,18 @@
+<audio id="audio" #idaudio preload="auto" tabindex="0" controls="" (ended)="next()" src="{{url+audioSrc.musicFile}}">
+
+</audio>
+
+<h2>Music list:</h2>
+<div class="ostapik" *ngFor="let one of musics;let i=index"  [ngClass]="{'active':i==musics.indexOf(audioSrc)}">
+  <button (click)="onClick(one)" > ►  </button>
+  <span (click)="onClick(one)">
+  {{one.perfomerName}}
+  -
+  {{one.trackName}}
+  </span>
+  <br>
+
+  ---------------------------------------
+
+</div>
+<br>

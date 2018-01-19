@@ -1,7 +1,9 @@
 package ua.service;
 
 import org.springframework.web.multipart.MultipartFile;
+import ua.entity.Music;
 import ua.entity.User;
+
 import java.util.List;
 
 public interface UserService {
@@ -29,5 +31,9 @@ public interface UserService {
     User updateAge(User user);
 
     User findByName(String name);
+
+    List<Music> findAllMusic(Integer id);
+
+    User addMusic(Integer idMusic,Integer idUser);
 
 }
