@@ -5,19 +5,30 @@ import {Router} from "@angular/router";
 import {UserService} from "../../shared/user.service";
 import {MusicService} from "../../shared/music-service";
 import {Music} from "../../shared/models/music";
+import {LoginService} from "../registration/login.service";
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css'],
-  providers: [UserService,MusicService]
+  providers: [UserService,MusicService,LoginService]
 })
 export class ContentComponent implements OnInit {
   user: User;
   music: Music;
 
-  constructor(private _router: Router, private _userService: UserService, private _musicService: MusicService) {
+  constructor(private _router: Router, private _userService: UserService, private _loginService: LoginService) {
     this.user = AppComponent._userDetailsService.user;
+    console.log(this.user.id);
+    if (isNullOrUndefined(this.user.id)&& AppComponent._userDetailsService.checkAuth()){
+      console.log("mi nensli usera no token e");
+      _loginService.getUser().subscribe(next =>{
+        this.user = next;
+        console.log(JSON.stringify(next));
+        AppComponent._userDetailsService.user = next;
+      });
+    }
   }
 
 
@@ -33,17 +44,6 @@ export class ContentComponent implements OnInit {
     this._router.navigateByUrl('login');
   }
 
-  // saveMusic(musicFile: any){
-  //   const file = musicFile.files[0];
-  //   const formDate = new FormData();
-  //   formDate.append('perfomerName',this.)
-  //
-  //   this._musicService.save(new FormData(music)).subscribe(next => {
-  //   }, err => {
-  //     console.error(err);
-  //   });
-
-  // }
   saveImage(form: HTMLFormElement) {
     this._userService.saveImage(new FormData(form), this.user.id).subscribe(next => {
       this.user = next;

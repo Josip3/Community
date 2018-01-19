@@ -43,6 +43,7 @@ export class UserDetailsService {
   }
 
   checkAuth(): boolean {
+    console.log(localStorage.getItem("access_token"));
     return (!isNullOrUndefined(localStorage.getItem("access_token")));
   }
 

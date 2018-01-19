@@ -32,9 +32,6 @@ export class AuthInterceptor implements HttpInterceptor {
           console.error('isNullOrUndefined(localStorage.getItem("refresh_token"))');
           return Observable.throw(err);
         } else {
-          const data = 'refresh_token='
-            + encodeURIComponent(localStorage.getItem('refresh_token')) + '&grant_type=refresh_token&client_id=' +
-            encodeURIComponent('clientapp') + '&client_secret=' + encodeURIComponent('123456');
           const authReq = new HttpRequest('POST', '/oauth/token', {
             params: new HttpParams().set('refresh_token', localStorage.getItem('refresh_token'))
               .set('grant_type', 'refresh_token').set('client_id', 'clientapp').set('client_secret', '123456')
@@ -42,6 +39,7 @@ export class AuthInterceptor implements HttpInterceptor {
           next.handle(authReq).catch((error) => Observable.throw(error)).subscribe(
             next => {
               console.log(next);
+              AppComponent._userDetailsService.tokenParseInLocalStorage(next);
             }, error => {
               console.error(error);
               this._router.navigateByUrl('/login');

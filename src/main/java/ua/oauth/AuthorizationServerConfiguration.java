@@ -23,7 +23,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     public static final String RESOURCE_ID = "restservice";
 
-    int accessTokenValiditySeconds = 3600;
+    int accessTokenValiditySeconds = 36000000;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -51,7 +51,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .scopes("read", "write")
                 .resourceIds(RESOURCE_ID)
                 .secret("123456")
-                .accessTokenValiditySeconds(600);
+                .accessTokenValiditySeconds(accessTokenValiditySeconds);
     }
 
 
