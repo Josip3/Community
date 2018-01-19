@@ -3,6 +3,8 @@
 </audio>
 
 <h2>Music list:</h2>
+<label style="margin-left: 15px;margin-right: 10px">Пошук бамжей:</label><input type="text" (input)="filter(filt.value)" #filt>
+
 <div class="ostapik" *ngFor="let one of musics;let i=index"  [ngClass]="{'active':i==musics.indexOf(audioSrc)}">
   <button (click)="onClick(one)" > ►  </button>
   <span (click)="onClick(one)">

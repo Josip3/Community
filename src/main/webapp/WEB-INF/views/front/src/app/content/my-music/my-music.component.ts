@@ -16,6 +16,7 @@ export class MyMusicComponent implements OnInit {
   audio: Music = new Music();
   audioSrc: Music = new Music();
   musics: Music[] = [];
+  allMusics: Music[] = [];
   @ViewChild("idaudio") eraudio: ElementRef;
   url: string = Url.url;
 
@@ -59,6 +60,7 @@ export class MyMusicComponent implements OnInit {
   getAllMusic() {
     this.userService.myMusic(AppComponent._userDetailsService.user.id).subscribe(next => {
       this.musics = next;
+      this.allMusics = next;
       this.start();
       console.log(JSON.stringify(next));
     }, err => {
@@ -67,4 +69,10 @@ export class MyMusicComponent implements OnInit {
       console.log('complete');
     });
   }
+
+
+  filter(val:string){
+    this.musics = this.allMusics.filter(value => value.perfomerName.toLocaleLowerCase().includes(val.toLocaleLowerCase()))    ;
+  }
+
 }

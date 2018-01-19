@@ -17,4 +17,5 @@ export class User {
   photoList: string[];
   messageList: string[];
   postList: string[];
+  friendsList : User[];
 }

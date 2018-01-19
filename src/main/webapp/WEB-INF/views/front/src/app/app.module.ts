@@ -18,6 +18,7 @@ import { MusicComponent } from './content/music/music.component';
 import { MyMusicComponent } from './content/my-music/my-music.component';
 import { PreviewComponent } from './preview/preview.component';
 import { FriendMusicComponent } from './preview/friend-music/friend-music.component';
+import { GalleryComponent } from './content/gallery/gallery.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'sing-in', pathMatch: 'full'},
@@ -49,6 +50,7 @@ const routes: Routes = [
     MyMusicComponent,
     PreviewComponent,
     FriendMusicComponent,
+    GalleryComponent,
   ],
   imports: [
     FormsModule,

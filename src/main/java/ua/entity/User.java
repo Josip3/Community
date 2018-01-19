@@ -50,6 +50,9 @@ public class User implements UserDetails {
     @JsonIgnore
     @ManyToOne
     private Country userCountry;
+    @JsonIgnore
+    @ManyToMany
+    private List<User> friendsList;
 
     @JsonIgnore
     @ManyToMany

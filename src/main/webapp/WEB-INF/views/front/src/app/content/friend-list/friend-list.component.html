@@ -1,5 +1,5 @@
 <div class="ostap">
-  <label style="margin-left: 15px;margin-right: 10px">Пошук бамжей:</label><input>
+  <label style="margin-left: 15px;margin-right: 10px">Пошук бамжей:</label><input type="text" (input)="filter(filt.value)" #filt>
   <div *ngFor="let one of users">
     <div class="col-md-8" routerLink="/friend/{{one.id}}">
       <h5 id="kek">

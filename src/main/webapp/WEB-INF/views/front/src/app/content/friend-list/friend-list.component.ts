@@ -11,17 +11,23 @@ import {UserService} from "../../../shared/user.service";
 export class FriendListComponent implements OnInit {
 
   users:User[] = [];
+  allUsers:User[]=[];
 
 
   constructor(private _userService:UserService) {
     this._userService.getAll().subscribe(next=>{
       this.users = next;
+      this.allUsers = next;
       console.log(JSON.stringify(next));
     }, err=>{
       console.error(err);
     },()=>{
       console.log('complete');
     });
+  }
+
+  filter(val:string){
+    this.users = this.allUsers.filter(value => value.name.toLocaleLowerCase().includes(val.toLocaleLowerCase()))    ;
   }
 
   ngOnInit() {
