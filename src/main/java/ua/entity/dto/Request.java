@@ -1,4 +1,4 @@
-package ua.request.dto;
+package ua.entity.dto;
 
 /**
  *  Marker.
