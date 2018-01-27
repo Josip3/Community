@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ua.entity.enums.Role;
-import ua.request.dto.Request;
+import ua.entity.dto.Request;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -56,20 +56,20 @@ public class User implements UserDetails {
 
     @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "GROUP_FROM_USER", joinColumns = @JoinColumn(name = "ID_USER"), inverseJoinColumns = @JoinColumn(name = "ID_GROUP"))
     private List<Group> groupList;
+
     @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "MUSIC_FROM_USER", joinColumns = @JoinColumn(name = "ID_USER"), inverseJoinColumns = @JoinColumn(name = "ID_MUSIC"))
     private List<Music> musicList;
+
     @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "PHOTO_FROM_USER", joinColumns = @JoinColumn(name = "ID_USER"), inverseJoinColumns = @JoinColumn(name = "ID_PHOTO"))
     private List<Photo> photoList;
+
     @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "USER_MESSAGE", joinColumns = @JoinColumn(name = "ID_USER"), inverseJoinColumns = @JoinColumn(name = "ID_MESSAGE"))
     private List<Message> messageList;
+
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Post> postList;

@@ -23,6 +23,5 @@ public class Message {
     @Getter@Setter private LocalDateTime messageTime;
 
     @ManyToMany
-    @JoinTable(name = "USER_MESSAGE",joinColumns = @JoinColumn(name = "ID_MESSAGE"),inverseJoinColumns = @JoinColumn(name = "ID_USER"))
-    @Getter@Setter private List<User> users = new ArrayList<>();
+    @Getter@Setter private List<User> users;
 }

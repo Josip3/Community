@@ -24,7 +24,6 @@ public class Group {
     @Getter@Setter private ContentType contentType;
 
     @ManyToMany
-    @JoinTable(name = "GROUP_FROM_USER",joinColumns = @JoinColumn(name = "ID_GROUP"),inverseJoinColumns = @JoinColumn(name = "ID_USER"))
     private List<User> groupList;
 
     @OneToMany(mappedBy = "group")
