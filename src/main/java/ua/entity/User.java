@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static ua.service.validators.ValidationConstants.*;
+import static ua.interfaceMarker.validators.ValidationConstants.*;
 
 @AllArgsConstructor
 @ToString

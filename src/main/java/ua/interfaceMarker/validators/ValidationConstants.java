@@ -1,4 +1,4 @@
-package ua.service.validators;
+package ua.interfaceMarker.validators;
 
 public class ValidationConstants {
 
