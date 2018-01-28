@@ -20,6 +20,8 @@ public class Group {
 
     @Setter@Getter private String nameGroup;
 
+    @Getter@Setter private int idMusic;
+
     @ManyToOne
     @Getter@Setter private ContentType contentType;
 
@@ -30,6 +32,5 @@ public class Group {
     @Getter@Setter private List<Post> postList;
 
 
-    @Getter@Setter private int idMusic;
 
 }

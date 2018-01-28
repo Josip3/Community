@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ua.entity.enums.Role;
-import ua.entity.dto.Request;
+import ua.interfaceMarker.Request;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -47,6 +47,7 @@ public class User implements UserDetails {
     private LocalDateTime dateOfBirth;
     @Enumerated
     private Role role;
+
     @JsonIgnore
     @ManyToOne
     private Country userCountry;

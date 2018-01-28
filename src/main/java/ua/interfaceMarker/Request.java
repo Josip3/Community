@@ -1,4 +1,4 @@
-package ua.entity.dto;
+package ua.interfaceMarker;
 
 /**
  *  Marker.
