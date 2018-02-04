@@ -33,5 +33,14 @@ public class MusicController {
         return new ResponseEntity<>(musicService.findAll(),HttpStatus.OK);
     }
 
+    @DeleteMapping("/delete/{id}")
+    private ResponseEntity delete(@PathVariable int id){
+        return new ResponseEntity(musicService.delete(id)?HttpStatus.OK : HttpStatus.CONFLICT);
+    }
+
+    @GetMapping("/find-one/{id}")
+    private ResponseEntity<Music> findOne(@PathVariable int id){
+        return new ResponseEntity<>(musicService.findOne(id),HttpStatus.OK);
+    }
 
 }

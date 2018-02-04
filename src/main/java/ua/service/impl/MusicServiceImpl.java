@@ -47,8 +47,17 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
-    public void delete(Integer id) {
-        musicRepository.delete(id);
+    public boolean delete(Integer id) {
+        if (id != null || id >= 0) {
+            try {
+                musicRepository.delete(musicRepository.findOne(id));
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        } else {
+            throw new UnknownError();
+        }
     }
 
     @Override

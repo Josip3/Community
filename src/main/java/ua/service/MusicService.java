@@ -15,7 +15,7 @@ public interface MusicService {
 
     Music findOne(Integer id);
 
-    void delete(Integer id);
+    boolean delete(Integer id);
 
     String encodeToBase64(MultipartFile file);
 
