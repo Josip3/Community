@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ContentTypeService {
 
-    void save(ContentType contentType);
+    ContentType save(ContentType contentType);
 
     List<ContentType> findAll();
 

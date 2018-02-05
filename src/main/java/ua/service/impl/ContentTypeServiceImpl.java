@@ -15,8 +15,8 @@ public class ContentTypeServiceImpl implements ContentTypeService{
     private ContentTypeRepository contentTypeRepository;
 
     @Override
-    public void save(ContentType commodity) {
-        contentTypeRepository.save(commodity);
+    public ContentType save(ContentType commodity) {
+        return contentTypeRepository.save(commodity);
     }
 
     @Override
